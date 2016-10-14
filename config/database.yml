@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: oportunities
+  pool: 5
+  username: igOportunities3
+  password: oportunities 
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: oportunities_test
+  pool: 5
+  username: igOportunities3
+  password: oportunities
