@@ -4,14 +4,14 @@ development:
   host: localhost
   database: oportunities
   pool: 5
-  username: igOportunities3
-  password: oportunities 
+  username: elogim
+  password: elogim123 
 
 test:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: oportunities_test
+  database: oportunities_testP
   pool: 5
-  username: igOportunities3
-  password: oportunities
+  username: elogim
+  password: elogim123
