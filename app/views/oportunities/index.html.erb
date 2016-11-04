@@ -1,5 +1,30 @@
 <%if !@oportunities.empty?%>
-	Si hay oportunidades llave!
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>identificacion</th>
+				<th>Fuente</th>
+				<th>socio asignado</th>
+				<th>Estado</th>
+				<th>Compañia</th>
+				<th>Email</th>
+				<th>Detalle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@oportunities.each do |oportunity|%>
+				<tr>
+					<td><%=oportunity.identification%></td>
+					<td><%=oportunity.oportunity_source%></td>
+					<td><%=oportunity.assigned_partner%></td>
+					<td><%=oportunity.status%></td>
+					<td><%=oportunity.company_name%></td>
+					<td><%=oportunity.contact_email%></td>
+					<td><%=link_to  raw("<i class=\" glyphicon glyphicon-log-in\"></i>"), show_oportunity_path(oportunity),class:"btn btn-success"%></td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
 <%else%>
 	No hay oportunidades llave!
 <%end%>

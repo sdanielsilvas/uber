@@ -1,5 +1,6 @@
-class AddFieldsToOportunityItems < ActiveRecord::Migration[5.0]
+class AddFieldsToOportunityItem < ActiveRecord::Migration[5.0]
   def change
+  	add_column :oportunity_items, :oportunity_id, :int
   	add_column :oportunity_items, :oportunity_identification, :string
   	add_column :oportunity_items, :product, :string
   	add_column :oportunity_items, :sku, :string

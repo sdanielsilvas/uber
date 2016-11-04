@@ -1,0 +1,75 @@
+<div class="row oportunity-info">
+	<div class="col-md-3 form-grup">
+		<p>Identificación:</p>
+		<p><%=@oportunity.identification%></p>
+	</div>
+	<div class="col-md-3">
+		<p>Fuente:</p>
+		<p><%=@oportunity.oportunity_source%></p>
+	</div>
+	<div class="col-md-3">
+		<p>Socio asignado:</p>
+		<p><%=@oportunity.assigned_partner%></p>
+	</div>
+	<div class="col-md-3">
+		<p>Estado:</p>
+		<%=@oportunity.status%>
+	</div>
+</div>
+<hr>
+<div class="row oportunity-info">
+	<div class="col-md-3 form-grup">
+		<p>Nombre de la compañia:</p>
+		<p><%=@oportunity.company_name%></p>
+	</div>
+	<div class="col-md-3">
+		<p>Email de contacto:</p>
+		<p><%=@oportunity.contact_email%></p>
+	</div>
+	<div class="col-md-3">
+		<p>Telefono:</p>
+		<p><%=@oportunity.business_phone%></p>
+	</div>
+	<div class="col-md-3">
+		<p>ID de la subasta:</p>
+		<%=@oportunity.auction_id%>
+	</div>
+</div>
+<hr>
+<div class="row col-md-12">
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+						Items
+					</a>
+				</h4>
+			</div>
+			<div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+							<th>Producto</th>
+								<th>sku</th>
+								<th>cantidad</th>
+								<th>precio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%@items.each do |item|%>
+							<tr>
+								<td><%=item.product%></td>
+								<td><%=item.sku%></td>
+								<td><%=item.quantity%></td>
+								<td><%=item.unit_price%></td>
+							</tr>
+							<%end%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
