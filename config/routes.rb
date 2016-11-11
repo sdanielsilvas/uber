@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 	get 'oportunities/new', to:'oportunities#charge'
 	get 'load_oportunity', to:'oportunities#new'
 	post 'load_oportunity', to:'oportunities#load'
-	get 'test',to:'oportunities#test'
+	get 'test', to:'oportunities#test'
 	put 'oportunities', to:"oportunities#update"
+
+	#providers routes
+	get 'providers', to:"providers#index"
+
+	#oportunity providers routes
+	post 'oportunity_providers', to:"oportunity_providers#create"
 end

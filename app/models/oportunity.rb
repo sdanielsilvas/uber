@@ -12,6 +12,16 @@ class Oportunity < ApplicationRecord
 		return xlsx.info
 	end
 
+	def self.send_email
+		oportunities = Oportunity.where(status:"Finalizado")
+		oportunities.each do |oportunity|
+			email = OportunityProvider.where(oportunity_identification:oportunity.identification).where(position:"1").first.email
+			
+			OportunityMailer.test(email).deliver
+		end
+		
+	end
+
 	private
 
 	def self.createOportunities(sheet)

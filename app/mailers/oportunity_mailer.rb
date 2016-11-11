@@ -3,7 +3,7 @@ class OportunityMailer < ApplicationMailer
 	
 	def test(to)
 		@url  = 'http://example.com/login'
-		mail(to: to, subject: 'Welcome to My Awesome Site')
+		mail(to: to, subject: 'Ganaste')
 	end
 end
 

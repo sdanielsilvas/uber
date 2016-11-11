@@ -1,0 +1,18 @@
+<div class="row">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>NIT</th>
+				<th>Nombre</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@providers.each do |provider|%>
+				<tr>
+					<td><%=provider.nit%></td>
+					<td><%=provider.name%></td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>
