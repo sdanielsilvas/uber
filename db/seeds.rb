@@ -9,3 +9,4 @@
 # Create test user
 
 User.create(email:"test@test.com",password:"12345678")
+Credential.create(user_id:1,key:"61d87fb0e30a9b3e",iv:"027c1146b1b8f927")

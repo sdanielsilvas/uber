@@ -1,7 +1,9 @@
 class OportunityProvider < ApplicationRecord
 
 	def self.create_providers(oportunityProviders)
+		oportunityProviders = JSON.parse(oportunityProviders)
 		oportunity = Oportunity.find_by_auction_id(oportunityProviders.first["opportunityId"])
+		
 		oportunity.status = "Finalizado"
 		oportunity.finalization_date = Time.new
 		oportunity.save
@@ -18,5 +20,6 @@ class OportunityProvider < ApplicationRecord
 			end
 		end
 		Oportunity.send_email
+		return oportunity.status
 	end
 end

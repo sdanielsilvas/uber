@@ -11,10 +11,13 @@ Rails.application.routes.draw do
 	post 'load_oportunity', to:'oportunities#load'
 	get 'test', to:'oportunities#test'
 	put 'oportunities', to:"oportunities#update"
+	get 'finalize_oportunity/:id', to: "oportunities#finalize", as:'finalize_oportunity'
 
 	#providers routes
 	get 'providers', to:"providers#index"
 
 	#oportunity providers routes
 	post 'oportunity_providers', to:"oportunity_providers#create"
+
+	post 'credentials', to:"users#update_credentials"
 end

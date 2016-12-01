@@ -6,7 +6,8 @@
   <body>
     <h1>Hola</h1>
     <p>
-      estos son los datos del cliente ....  para contactar Clic aqui.
+      <%=@id%>
+      estos son los datos del cliente ....  para contactar <%= link_to 'Click aquí', finalize_oportunity_url(@id)%>
     </p>
   </body>
 </html>
