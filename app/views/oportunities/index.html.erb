@@ -4,16 +4,22 @@
 	<div class="form-group">
 		
 		<div class="col-md-12">
-			<label for="file">Estado:</label>
+			<div class="col-md-3 col-xs-3 col-lg-3">
+				<label for="file">Estado:</label>
+				<%= select_tag "status", options_for_select(@status),class:"form-control"%>
+			</div>
+			<div class="col-md-3 col-xs-3 col-lg-3">
+				<label for="file">Buscar:</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="col-md-2 filters-button">
+				
+				<%= submit_tag('Cargar',class:'btn btn-success') %>
+			</div>
 		</div>
-		<div class="col-md-3 col-xs-3 col-lg-3">
 
-			<%= select_tag "status", options_for_select(@status),class:"form-control"%>
-
-		</div>
-		<div class="col-md-1 col-xs-1 col-lg-1">
-			<%= submit_tag('Cargar',class:'btn btn-success') %>
-		</div>
+		
+		
 	</div>
 	<% end %>
 </div>
@@ -45,6 +51,9 @@
 		<%end%>
 	</tbody>
 </table>
+<div class="col-md-12 text-center">
+	<%= will_paginate @oportunities,renderer: BootstrapPagination::Rails%>
+</div>
 <%else%>
-No hay oportunidades llave!
+No hay oportunidades!
 <%end%>

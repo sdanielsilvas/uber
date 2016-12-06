@@ -6,6 +6,9 @@ class Oportunity < ApplicationRecord
 
 	ALGORITHM = "AES-128-CBC"
 
+	scope :starts_with, -> (identification) { where("identification like ? OR contact_email like ?", "#{identification}%", "#{identification}%")}
+
+
 
 	def self.readFile(file_path)
 		# oportunity = Oportunity.first

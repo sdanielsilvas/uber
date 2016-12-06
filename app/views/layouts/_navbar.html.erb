@@ -11,15 +11,15 @@
   </div>
   
 </div>
-<nav class="navbar navbar-inverse blue-navbar">
-  <div class="container-fluid">
+<nav class="navbar blue-navbar">
+   
     <div class="navbar-header">
     </div>
     <ul class="nav navbar-nav">
-      <li class="navbar-item"><%= link_to 'Listar', oportunities_path%></li>
-      <li class="navbar-item"><%= link_to 'Cargar', oportunities_new_path%></li>
-      <li class="navbar-item"><%= link_to 'Canales', providers_path%></li>
+      <li class="navbar-item"><%= link_to 'Listar', oportunities_path, class:"navbar-item"%></li>
+      <li class="navbar-item"><%= link_to 'Cargar', oportunities_new_path, class:"navbar-item"%></li>
+      <li class="navbar-item"><%= link_to 'Canales', providers_path, class:"navbar-item"%></li>
     </ul>
-  </div>
+  
 </nav>
 <% end %>

@@ -19,44 +19,80 @@
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
- }
+}
 
 .alert-alert {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
- }
+}
 
 .alert-success {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+}
 
 .alert-notice {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+}
 .log-out{
     padding-top:15px; 
 }
 
-.blue-navbar{
-    background-color: #0766BB;
-    color:black;
+.blue-navbar {
+    background-color: #3A9DD3;
+    
 }
 
-.navbar-inverse .navbar-nav > li > a{
-    color: black;
-    font-size: 20px; 
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+    font-size: 20px;
 }
-
 .navbar-item{
     width:200px;
     padding-left: 70px;
-    font-color:black !important;
+    font-size: 20px;
+    color: white;
+
 }
+
+.navbar-nav > li > a {
+    padding-left: 70px;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.filters-button {
+    margin-top: 26px;
+}
+
+.opportunity-item-tittle {
+    font-weight: 900;
+    font-size: 16px;
+    color: rgb(75, 112, 132);
+}
+
+.panel-blue > .panel-heading {
+    color: #FFFCFC;
+    background-color: #3a9dd3;
+}
+
+.btn-excel:hover {
+    color: #FFFDFD;
+    background-color: #3a9dd3;
+    border-color: #0e6696;
+}
+
+.send-excel-btn{
+    margin-top: 10px;
+
+}
+

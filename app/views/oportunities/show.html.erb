@@ -1,44 +1,44 @@
 <div class="row oportunity-info">
 	<div class="col-md-3 form-grup">
-		<p>Identificación:</p>
+		<p class="opportunity-item-tittle">Identificación:</p>
 		<p><%=@oportunity.identification%></p>
 	</div>
 	<div class="col-md-3">
-		<p>Fuente:</p>
+		<p class="opportunity-item-tittle">Fuente:</p>
 		<p><%=@oportunity.oportunity_source%></p>
 	</div>
 	<div class="col-md-3">
-		<p>Socio asignado:</p>
+		<p class="opportunity-item-tittle">Socio asignado:</p>
 		<p><%=@oportunity.assigned_partner%></p>
 	</div>
 	<div class="col-md-3">
-		<p>Estado:</p>
+		<p class="opportunity-item-tittle">Estado:</p>
 		<%=@oportunity.status%>
 	</div>
 </div>
 <hr>
 <div class="row oportunity-info">
 	<div class="col-md-3 form-grup">
-		<p>Nombre de la compañia:</p>
+		<p class="opportunity-item-tittle">Nombre de la compañia:</p>
 		<p><%=@oportunity.company_name%></p>
 	</div>
 	<div class="col-md-3">
-		<p>Email de contacto:</p>
+		<p class="opportunity-item-tittle">Email de contacto:</p>
 		<p><%=@oportunity.contact_email%></p>
 	</div>
 	<div class="col-md-3">
-		<p>Telefono:</p>
+		<p class="opportunity-item-tittle">Telefono:</p>
 		<p><%=@oportunity.business_phone%></p>
 	</div>
 	<div class="col-md-3">
-		<p>ID de la subasta:</p>
+		<p class="opportunity-item-tittle">ID de la subasta:</p>
 		<%=@oportunity.auction_id%>
 	</div>
 </div>
 <hr>
 <div class="row col-md-12">
 	<div class="panel-group" id="accordion">
-		<div class="panel panel-default">
+		<div class="panel panel-default panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
@@ -51,10 +51,10 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Producto</th>
-								<th>sku</th>
-								<th>cantidad</th>
-								<th>precio</th>
+								<th class="opportunity-item-tittle">Producto</th>
+								<th class="opportunity-item-tittle">sku</th>
+								<th class="opportunity-item-tittle">cantidad</th>
+								<th class="opportunity-item-tittle">precio</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,7 +76,7 @@
 <hr>
 <div class="row col-md-12">
 	<div class="panel-group" id="accordion">
-		<div class="panel panel-default">
+		<div class="panel panel-default panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
@@ -89,14 +89,14 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Nombre del canal</th>
-								<th>Puntos</th>
-								<th>Precio</th>
-								<th>Horas capacitación</th>
-								<th>Horas soporte</th>
-								<th>soporte local</th>
-								<th>disponibilidad soporte</th>
-								<th>Horas migracion</th>
+								<th class="opportunity-item-tittle">Nombre del canal</th>
+								<th class="opportunity-item-tittle">Puntos</th>
+								<th class="opportunity-item-tittle">Precio</th>
+								<th class="opportunity-item-tittle">Horas capacitación</th>
+								<th class="opportunity-item-tittle">Horas soporte</th>
+								<th class="opportunity-item-tittle">soporte local</th>
+								<th class="opportunity-item-tittle">disponibilidad soporte</th>
+								<th class="opportunity-item-tittle">Horas migracion</th>
 							</tr>
 						</thead>
 						<tbody>

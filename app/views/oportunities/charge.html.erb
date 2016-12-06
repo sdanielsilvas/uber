@@ -5,15 +5,12 @@
 
 <div class="row">
 	<%= form_tag '/load_oportunity', multipart: true do %>
-	<div class="col-md-1 col-lg-1 col-xs-1">
-		<label for="file">XLS:</label>
-	</div>
-	<div class="col-md-5 col-lg-5 col-xs-5">
-		<span class="btn btn-default">
+	<div class="col-md-12">
+		<span class="btn btn-default btn-excel">
 			<%= file_field_tag "file" %>
 		</span>
 	</div>
-	<div class="col-md-3 col-xs-3 col-lg-3">
+	<div class="col-md-12 send-excel-btn">
 		<%= submit_tag('Cargar',class:'btn btn-success') %>
 	</div>
 	<% end %>
