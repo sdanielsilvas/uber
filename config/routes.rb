@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 	post 'oportunity_providers', to:"oportunity_providers#create"
 
 	post 'credentials', to:"users#update_credentials"
+
+	post 'accepted', to:"oportunity_providers#associate"
 end

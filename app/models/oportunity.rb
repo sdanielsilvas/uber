@@ -2,33 +2,10 @@ class Oportunity < ApplicationRecord
 	validates_uniqueness_of :identification
 	#belongs_to :user
 	#has_many :items, class_name: "OportunityItem", foreign_key: "oportunity_identification"
+	#has_and_belongs_to_many :providers
+
 	ALGORITHM = "AES-128-CBC"
 
-		KEY = "61d87fb0e30a9b3e"
-		IV = "027c1146b1b8f927"
-
-	# cipher = OpenSSL::Cipher.new(ALGORITHM)
-	# cipher.encrypt()
-	# cipher.key = key
-	# cipher.iv = iv
-	# crypt = cipher.update("This is superior to unauthenticated modes in that it allows to detect if somebody effectively changed the ciphertext after it had been encrypted. This prevents malicious modifications of the ciphertext that could otherwise be exploited to modify ciphertexts in ways beneficial to potential attackers") + cipher.final()
-	# crypt_string = (Base64.encode64(crypt))
-	# puts "asi lo encripta en base 64"
-	# puts crypt_string
-
-
-
-
-	# cipher = OpenSSL::Cipher.new(ALGORITHM)
-	# cipher.decrypt()
-	# cipher.key = key
-	# cipher.iv = iv
-	# ricardo = "YrgJ6Ii3KrfVnXE4OsnoQT5FtJnkYLnmbs7si5TnTvYOM/8EgtHZrpzgXKXMm6pw"
-	# tempkey = Base64.decode64(ricardo)
-	# crypt = cipher.update(tempkey)
-	# crypt << cipher.final()
-	# puts "asi lo desencripta"
-	# puts crypt
 
 	def self.readFile(file_path)
 		# oportunity = Oportunity.first

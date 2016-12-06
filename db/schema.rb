@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121170007) do
+ActiveRecord::Schema.define(version: 20161202203118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(version: 20161121170007) do
     t.string   "position"
     t.string   "vendor_name"
     t.string   "points"
+    t.string   "price"
+    t.string   "training_hours"
+    t.string   "support_hours"
+    t.string   "local_support"
+    t.string   "support_availability"
+    t.string   "migration_hours"
   end
 
   create_table "providers", force: :cascade do |t|

@@ -1,8 +1,8 @@
 class OportunitiesController < ApplicationController
-	before_action :authenticate_user!, :except => [:update,:test,:finalize] 
+	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants] 
 	before_action :verify_credentials, :only =>[:update]
 
- 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize] 
+ 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants] 
 	def new
 		Oportunity.send
 		redirect_to root_path
@@ -26,6 +26,8 @@ class OportunitiesController < ApplicationController
 	def show
 		@oportunity = Oportunity.find(params[:id])
 		@items = OportunityItem.where(oportunity_identification:@oportunity.identification)
+		@oportunityProvider = OportunityProvider.where(oportunity_identification:@oportunity.identification)
+				
 	end
 
 	def test
@@ -54,4 +56,5 @@ class OportunitiesController < ApplicationController
 		info = Oportunity.readFile(params[:file].tempfile)
 		redirect_to root_path
 	end
+
 end

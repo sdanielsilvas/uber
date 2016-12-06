@@ -51,7 +51,7 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-							<th>Producto</th>
+								<th>Producto</th>
 								<th>sku</th>
 								<th>cantidad</th>
 								<th>precio</th>
@@ -64,6 +64,52 @@
 								<td><%=item.sku%></td>
 								<td><%=item.quantity%></td>
 								<td><%=item.unit_price%></td>
+							</tr>
+							<%end%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="row col-md-12">
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+						Canales
+					</a>
+				</h4>
+			</div>
+			<div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nombre del canal</th>
+								<th>Puntos</th>
+								<th>Precio</th>
+								<th>Horas capacitación</th>
+								<th>Horas soporte</th>
+								<th>soporte local</th>
+								<th>disponibilidad soporte</th>
+								<th>Horas migracion</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%@oportunityProvider.each do |oportunityprovider|%>
+							<tr>
+								<td><%=oportunityprovider.vendor_name%></td>
+								<td><%=oportunityprovider.points%></td>
+								<td><%=oportunityprovider.price%></td>
+								<td><%=oportunityprovider.training_hours%></td>
+								<td><%=oportunityprovider.support_hours%></td>
+								<td><%=oportunityprovider.local_support%></td>
+								<td><%=oportunityprovider.support_availability%></td>
+								<td><%=oportunityprovider.migration_hours%></td>
 							</tr>
 							<%end%>
 						</tbody>
