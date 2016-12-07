@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 	get 'providers', to:"providers#index"
 
 	#oportunity providers routes
-	post 'oportunity_providers', to:"oportunity_providers#create"
+	post 'oportunity_providers', to:"oportunity_providers#finalize"
 
 	post 'credentials', to:"users#update_credentials"
 
