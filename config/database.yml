@@ -15,3 +15,12 @@ test:
   pool: 5
   username: elogim
   password: elogim123
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: oportunities_production
+  pool: 5
+  username: elogim
+  password: elogim123
