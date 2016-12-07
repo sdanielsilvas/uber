@@ -11,10 +11,6 @@ class Oportunity < ApplicationRecord
 
 
 	def self.readFile(file_path)
-		# oportunity = Oportunity.first
-		# items = OportunityItem.where(oportunity_identification:oportunity.identification)
-		# message = {oportunity:oportunity,items:items}
-		# resp = RestClient.post 'http://10.0.0.13:8084/SubastaV4.2/api/createprocess/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
 		xlsx = Roo::Spreadsheet.open(file_path, extension: :xlsx)
 		createOportunities(xlsx)
 		return xlsx.info
@@ -23,12 +19,12 @@ class Oportunity < ApplicationRecord
 	def self.send_email
 		oportunities = Oportunity.where(status:"Finalizado")
 		oportunities.each do |oportunity|
-
-			email = OportunityProvider.where(oportunity_identification:oportunity.identification).where(position:"1").first.email
-			
-			#OportunityMailer.test(email,oportunity.id).deliver
-		end
-		
+			op = OportunityProvider.where(oportunity_identification:oportunity.identification)
+			unless op.blank?
+				email = op.where(position:"1").first.email
+				OportunityMailer.test(email,oportunity.id).deliver
+			end			
+		end	
 	end
 
 	private

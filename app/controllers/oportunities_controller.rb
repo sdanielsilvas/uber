@@ -9,13 +9,12 @@ class OportunitiesController < ApplicationController
 	end
 
 	def index
-		
 		unless (params[:status].nil? || params[:status]=="Todas")
-			@oportunities = Oportunity.where(status:params[:status]).paginate(page: params[:page],per_page: 5)
+			@oportunities = Oportunity.where(status:params[:status]).paginate(page: params[:page],per_page: 10)
 			@oportunities = @oportunities.starts_with(params[:starts_with]) if params[:starts_with].present?
 
 		else
-			@oportunities = Oportunity.all.paginate(page: params[:page],per_page: 5)
+			@oportunities = Oportunity.all.paginate(page: params[:page],per_page: 10)
 			@oportunities = @oportunities.starts_with(params[:starts_with]) if params[:starts_with].present?
 		end 
 		@status = ["Todas"] + Oportunity.all.map{|x|x.status}.uniq
