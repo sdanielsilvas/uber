@@ -1,3 +1,7 @@
+
+require 'sendgrid-ruby'
+include SendGrid
+require 'json'
 class Oportunity < ApplicationRecord
 	validates_uniqueness_of :identification
 	#belongs_to :user
@@ -25,6 +29,20 @@ class Oportunity < ApplicationRecord
 				OportunityMailer.test(email,oportunity.id).deliver
 			end			
 		end	
+	end
+
+	def self.send_email_sendgrid
+		from = Email.new(email: 'analisis@personalita.co')
+		subject = 'Hello World from the SendGrid Ruby Library!'
+		to = Email.new(email: 'sdanielsilvas@gmail.com')
+		content = Content.new(type: 'text/plain', value: 'Hello, Email!')
+		mail = Mail.new(from, subject, to, content)
+
+		sg = SendGrid::API.new(api_key: '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')
+		response = sg.client.mail._('send').post(request_body: mail.to_json)
+		puts response.status_code
+		puts response.body
+		puts response.headers
 	end
 
 	private

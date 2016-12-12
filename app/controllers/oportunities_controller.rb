@@ -1,8 +1,8 @@
 class OportunitiesController < ApplicationController
-	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants] 
+	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants,:test_email] 
 	before_action :verify_credentials, :only =>[:update]
 
- 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants] 
+ 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants,:test_email] 
 	def new
 		Oportunity.send
 		redirect_to root_path
@@ -57,6 +57,10 @@ class OportunitiesController < ApplicationController
 		#Oportunity.readFile(nil)
 		info = Oportunity.readFile(params[:file].tempfile)
 		redirect_to root_path
+	end
+
+	def test_email
+		Oportunity.send_email_sendgrid
 	end
 
 end

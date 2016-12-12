@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 	post 'credentials', to:"users#update_credentials"
 
 	post 'accepted', to:"oportunity_providers#associate"
+
+	post 'test_email', to:"oportunities#test_email"
 end
