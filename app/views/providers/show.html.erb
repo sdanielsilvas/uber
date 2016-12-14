@@ -1,0 +1,29 @@
+
+<div class="row col-md-12">
+	<table class="table table-striped">
+		<thead class="blue-header">
+			<tr>
+				<th class="opportunity-item-tittle">identificacion</th>
+				<th class="opportunity-item-tittle">Fuente</th>
+				<th class="opportunity-item-tittle">socio asignado</th>
+				<th class="opportunity-item-tittle">Estado</th>
+				<th class="opportunity-item-tittle">Compañia</th>
+				<th class="opportunity-item-tittle">Email</th>
+				<th class="opportunity-item-tittle">Detalle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@oportunities.each do |oportunity|%>
+			<tr>
+				<td><%=oportunity.identification%></td>
+				<td><%=oportunity.oportunity_source%></td>
+				<td><%=oportunity.assigned_partner%></td>
+				<td><%=oportunity.status%></td>
+				<td><%=oportunity.company_name%></td>
+				<td><%=oportunity.contact_email%></td>
+				<td><%=link_to  raw("<i class=\" glyphicon glyphicon-log-in\"></i>"), show_oportunity_path(oportunity),class:"btn btn-primary"%></td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>

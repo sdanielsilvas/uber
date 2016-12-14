@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 	post 'test_email', to:"oportunities#test_email"
 
 	get 'take_opportunity/:id/:oprovider', to:"oportunities#take", as:'take_opportunity'
+
+	get 'provider/:id', to:'providers#show', as:'show_provider'
 end

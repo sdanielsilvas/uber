@@ -31,11 +31,15 @@ class Oportunity < ApplicationRecord
 		end	
 	end
 
-	def self.send_email_sendgrid
-		op = Oportunity.find_by_identification("330")
-		op1 = OportunityProvider.last
-		OportunityMailer.test("sdanielsilvas@gmail.com",op,op1).deliver
+	def self.send_winner_email(oportunity)
+		op = OportunityProvider.where(oportunity_identification:oportunity.identification)
+		unless op.blank?
+			op1 = op.where(position:"1").first
+			email = op1.email
+			OportunityMailer.test(email,oportunity,op1).deliver
+		end	
 	end
+	
 
 	private
 

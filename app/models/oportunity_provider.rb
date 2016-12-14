@@ -40,7 +40,7 @@ class OportunityProvider < ApplicationRecord
 				migration_hours:@migration_hours)
 			
 		end
-		Oportunity.send_email
+		Oportunity.send_winner_email(oportunity)
 		return oportunity.status
 	end
 
