@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Hola</h1>
-    <p>
-      <%=@id%>
-      estos son los datos del cliente ....  para contactar <%= link_to 'Click aquí', finalize_oportunity_url(@id)%>
-    </p>
-  </body>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+   p {
+    white-space: pre;
+    color: black;
+  }
+</style>
+</head>
+<body>
+  <p>
+    Cordial Saludo,
+
+
+    Es un placer notificarle que su organización ha obtenido el mejor puntaje para la oportunidad  #<%=@oportunity.identification%>
+    generada para el cliente : <%=@oportunity.company_name%> el dia : 16/12/2016.
+
+    Los datos de su oferta deben ser mantenidos al cliente en las condiciones con las cuales su organización obtuvo el primer lugar
+
+
+    PRECIO : <%=@oportunityProvider.price%>
+    HORAS DE SOPORTE :  <%=@oportunityProvider.support_hours%>
+    HORAS DE CAPACITACION :  <%=@oportunityProvider.training_hours%>
+    DISPONIBILIDAD DE SOPORTE:  <%=@oportunityProvider.support_availability%>
+    SOPORTE LOCAL: <%=@oportunityProvider.local_support%>
+    HORAS DE MIGRACIÓN: <%=@oportunityProvider.migration_hours%>
+    
+
+    Recuerde que este proceso es por tiempo limitado y que usted dispone de 24 horas para contactar al cliente . En caso de que usted no desee continuar con la oferta o no contacte al cliente en el tiempo especificado, procederemos a notificar al canal que obtuvo el mejor puntaje inmediatamente después de usted.
+
+
+    Para confirmar su gestión exitosa  de contacto al cliente de <%= link_to 'Click aquí', take_opportunity_url(@oportunity.id,@oportunityProvider.id)%>
+
+    Atentamente,
+
+
+    Equipo gestion de oportunidades
+    Microsoft
+  </p>
+</body>
 </html>

@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 	post 'accepted', to:"oportunity_providers#associate"
 
 	post 'test_email', to:"oportunities#test_email"
+
+	get 'take_opportunity/:id/:oprovider', to:"oportunities#take", as:'take_opportunity'
 end

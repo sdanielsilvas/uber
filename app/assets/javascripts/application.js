@@ -19,5 +19,13 @@
 $( document ).ready(function() {
 	console.log($(".alert" ));
 	$(".alert-success, .alert-info, .alert-notice" ).fadeOut(4000);
+
+	$("#charge-btn").click(function(e){
+		e.preventDefault();
+		console.log('si dio');
+		$('#myModal').modal('show')    
+	})
+
+	
 });
 

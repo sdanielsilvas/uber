@@ -1,8 +1,14 @@
 class OportunitiesController < ApplicationController
-	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants,:test_email] 
+	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants,:test_email,:take] 
 	before_action :verify_credentials, :only =>[:update]
 
- 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants,:test_email] 
+	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants,:test_email,:take] 
+	
+	layout false, only: [:take]
+
+	before_filter :set_selected
+	
+
 	def new
 		Oportunity.send
 		redirect_to root_path
@@ -10,11 +16,11 @@ class OportunitiesController < ApplicationController
 
 	def index
 		unless (params[:status].nil? || params[:status]=="Todas")
-			@oportunities = Oportunity.where(status:params[:status]).paginate(page: params[:page],per_page: 10)
+			@oportunities = Oportunity.where(status:params[:status]).paginate(page: params[:page],per_page: 8)
 			@oportunities = @oportunities.starts_with(params[:starts_with]) if params[:starts_with].present?
 
 		else
-			@oportunities = Oportunity.all.paginate(page: params[:page],per_page: 10)
+			@oportunities = Oportunity.all.paginate(page: params[:page],per_page: 8)
 			@oportunities = @oportunities.starts_with(params[:starts_with]) if params[:starts_with].present?
 		end 
 		@status = ["Todas"] + Oportunity.all.map{|x|x.status}.uniq
@@ -29,7 +35,7 @@ class OportunitiesController < ApplicationController
 		@oportunity = Oportunity.find(params[:id])
 		@items = OportunityItem.where(oportunity_identification:@oportunity.identification)
 		@oportunityProvider = OportunityProvider.where(oportunity_identification:@oportunity.identification)
-				
+
 	end
 
 	def test
@@ -60,7 +66,18 @@ class OportunitiesController < ApplicationController
 	end
 
 	def test_email
+		puts "vaa enviar un correo"
 		Oportunity.send_email_sendgrid
+	end
+
+	def take
+		@opportunity = Oportunity.find(params[:id])
+		@opportunityProvider = OportunityProvider.find(params[:oprovider])
+		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)		
+	end
+
+	def set_selected
+		@selected = 'opportunities'
 	end
 
 end

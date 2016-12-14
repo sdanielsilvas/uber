@@ -1,25 +1,24 @@
 <% if user_signed_in? %>
 <div class="row header">
-  <div class="col-md-6"> 
-  <h3><span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo.png" width="164" height="60" alt=""></a></span>| Gestion de oportunidades</h3>  
-  </div>
-  <div class="col-md-2 pull-right log-out">
-      <h3><%= link_to(destroy_user_session_path, :method => :delete) do%>
-        <span class="glyphicon glyphicon-log-out"></span> Logout
-        <%end%>
-      </h3>
-  </div>
-  
+  <div class="col-md-6 col-md-offset-1"> 
+  <h3><span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo.png" width="164" height="60" alt=""></a></span>| <span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo-go.png" width="164" height="40" alt=""></a></span></h3>  
+  </div>  
 </div>
 <nav class="navbar blue-navbar">
    
     <div class="navbar-header">
     </div>
     <ul class="nav navbar-nav">
-      <li class="navbar-item"><%= link_to 'Listar', oportunities_path, class:"navbar-item"%></li>
-      <li class="navbar-item"><%= link_to 'Cargar', oportunities_new_path, class:"navbar-item"%></li>
-      <li class="navbar-item"><%= link_to 'Canales', providers_path, class:"navbar-item"%></li>
+      <li class="navbar-item"><%= link_to 'Listar', oportunities_path, class:"navbar-item navbar-item-yellow  #{'selected-navbar-item' if @selected=='opportunities'}"%></li>
+      
+      <li class="navbar-item"><%= link_to 'Canales', providers_path, class:"navbar-item navbar-item-yellow #{'selected-navbar-item' if @selected=='providers'}"%></li>
     </ul>
+    <div class="col-md-2 pull-right" style="margin-top: -8px;">
+      <h3><%= link_to(destroy_user_session_path, :method => :delete) do%>
+        <span class="glyphicon glyphicon-log-out"></span> Logout
+        <%end%>
+      </h3>
+  </div>
   
 </nav>
 <% end %>

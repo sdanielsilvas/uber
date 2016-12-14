@@ -10,49 +10,80 @@
 			</div>
 			<div class="col-md-3 col-xs-3 col-lg-3">
 				<label for="file">Buscar:</label>
-				<%=text_field_tag 'name',nil,class:"form-control"%>
+				<%=text_field_tag 'starts_with',nil,class:"form-control"%>
 			</div>
-			<div class="col-md-2 filters-button">
-				
-				<%= submit_tag('Cargar',class:'btn btn-success') %>
+			<div class="col-md-1 filters-button">
+				<%= submit_tag('Filtrar',class:'btn btn-primary') %>
+			</div>
+			<div class="col-md-1 filters-button">
+				<button id='charge-btn' class="btn btn-warning btn-yellow">Cargar</button>
 			</div>
 		</div>
-
-		
-		
 	</div>
 	<% end %>
 </div>
 <hr>
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>identificacion</th>
-			<th>Fuente</th>
-			<th>socio asignado</th>
-			<th>Estado</th>
-			<th>Compañia</th>
-			<th>Email</th>
-			<th>Detalle</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%@oportunities.each do |oportunity|%>
-		<tr>
-			<td><%=oportunity.identification%></td>
-			<td><%=oportunity.oportunity_source%></td>
-			<td><%=oportunity.assigned_partner%></td>
-			<td><%=oportunity.status%></td>
-			<td><%=oportunity.company_name%></td>
-			<td><%=oportunity.contact_email%></td>
-			<td><%=link_to  raw("<i class=\" glyphicon glyphicon-log-in\"></i>"), show_oportunity_path(oportunity),class:"btn btn-success"%></td>
-		</tr>
-		<%end%>
-	</tbody>
-</table>
+<div class="col-md-12">
+	<table class="table table-striped">
+		<thead class="blue-header">
+			<tr>
+				<th class="opportunity-item-tittle">identificacion</th>
+				<th class="opportunity-item-tittle">Fuente</th>
+				<th class="opportunity-item-tittle">socio asignado</th>
+				<th class="opportunity-item-tittle">Estado</th>
+				<th class="opportunity-item-tittle">Compañia</th>
+				<th class="opportunity-item-tittle">Email</th>
+				<th class="opportunity-item-tittle">Detalle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@oportunities.each do |oportunity|%>
+			<tr>
+				<td><%=oportunity.identification%></td>
+				<td><%=oportunity.oportunity_source%></td>
+				<td><%=oportunity.assigned_partner%></td>
+				<td><%=oportunity.status%></td>
+				<td><%=oportunity.company_name%></td>
+				<td><%=oportunity.contact_email%></td>
+				<td><%=link_to  raw("<i class=\" glyphicon glyphicon-log-in\"></i>"), show_oportunity_path(oportunity),class:"btn btn-primary"%></td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>
 <div class="col-md-12 text-center">
 	<%= will_paginate @oportunities,renderer: BootstrapPagination::Rails%>
+</div>
+<div class="col-md-12">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Cargar XLS</h4>
+				</div>
+				<%= form_tag '/load_oportunity', multipart: true do %>
+				<div class="row" style="margin-bottom:15px;">
+					
+					<div class="modal-body">
+						<div class="col-md-12">
+							<span class="btn btn-default">
+								<%= file_field_tag "file" %>
+							</span>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<%= submit_tag('Cargar',class:'btn btn-warning btn-yellow') %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 <%else%>
 No hay oportunidades!

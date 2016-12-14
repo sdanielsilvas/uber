@@ -1,17 +1,36 @@
 <div class="row">
+	<%= form_tag '/',method: :get do %>
+	<div class="form-group">
+		
+		<div class="col-md-12">
+			<div class="col-md-3 col-xs-3 col-lg-3">
+				<label for="file">Buscar:</label>
+				<%=text_field_tag 'starts_with',nil,class:"form-control"%>
+			</div>
+			<div class="col-md-1 filters-button">
+				<%= submit_tag('Filtrar',class:'btn btn-primary') %>
+			</div>
+		</div>		
+	</div>
+	<% end %>
+</div>
+<hr>
+<div class="row col-md-12">
 	<table class="table table-striped">
-		<thead>
+		<thead class="blue-header">
 			<tr>
 				<th>NIT</th>
 				<th>Nombre</th>
+				<th>Detalle</th>
 			</tr>
 		</thead>
 		<tbody>
 			<%@providers.each do |provider|%>
-				<tr>
-					<td><%=provider.nit%></td>
-					<td><%=provider.name%></td>
-				</tr>
+			<tr>
+				<td><%=provider.nit%></td>
+				<td><%=provider.name%></td>
+				<td><%=link_to  raw("<i class=\" glyphicon glyphicon-log-in\"></i>"), show_oportunity_path(provider),class:"btn btn-primary"%></td>
+			</tr>
 			<%end%>
 		</tbody>
 	</table>

@@ -1,7 +1,5 @@
 
-require 'sendgrid-ruby'
-include SendGrid
-require 'json'
+
 class Oportunity < ApplicationRecord
 	validates_uniqueness_of :identification
 	#belongs_to :user
@@ -25,24 +23,18 @@ class Oportunity < ApplicationRecord
 		oportunities.each do |oportunity|
 			op = OportunityProvider.where(oportunity_identification:oportunity.identification)
 			unless op.blank?
-				email = op.where(position:"1").first.email
-				OportunityMailer.test(email,oportunity.id).deliver
+				op1 = op.where(position:"1").first
+				email = op1.email
+				
+				OportunityMailer.test(email,oportunity,op1).deliver
 			end			
 		end	
 	end
 
 	def self.send_email_sendgrid
-		from = Email.new(email: 'analisis@personalita.co')
-		subject = 'Hello World from the SendGrid Ruby Library!'
-		to = Email.new(email: 'sdanielsilvas@gmail.com')
-		content = Content.new(type: 'text/plain', value: 'Hello, Email!')
-		mail = Mail.new(from, subject, to, content)
-
-		sg = SendGrid::API.new(api_key: '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')
-		response = sg.client.mail._('send').post(request_body: mail.to_json)
-		puts response.status_code
-		puts response.body
-		puts response.headers
+		op = Oportunity.find_by_identification("330")
+		op1 = OportunityProvider.last
+		OportunityMailer.test("sdanielsilvas@gmail.com",op,op1).deliver
 	end
 
 	private
@@ -102,7 +94,7 @@ class Oportunity < ApplicationRecord
 		items = OportunityItem.where(oportunity_identification:oportunity.identification)
 		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items}
 		begin
-			resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/createprocess/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			resp = RestClient.post 'http://10.0.0.13:8084/SubastaV4.2/api/createprocess/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
 			puts resp
 		rescue RestClient::Exception => e
 			puts e.http_body

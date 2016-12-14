@@ -46,8 +46,12 @@
 }
 
 .blue-navbar {
-    background-color: #3A9DD3;
+    background-color: #E5E5E5;
     
+}
+
+.btn-yellow{
+    background-color: #D8B81E;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -58,8 +62,13 @@
     width:200px;
     padding-left: 70px;
     font-size: 20px;
-    color: white;
+    color: black;
 
+}
+
+.selected-navbar-item{
+    background-color: #D8B81E !important;
+    
 }
 
 .navbar-nav > li > a {
@@ -77,12 +86,12 @@
 .opportunity-item-tittle {
     font-weight: 900;
     font-size: 16px;
-    color: rgb(75, 112, 132);
+    color: rgb(58, 58, 60);
 }
 
 .panel-blue > .panel-heading {
     color: #FFFCFC;
-    background-color: #3a9dd3;
+    background-color: #95BBDD;
 }
 
 .btn-excel:hover {
@@ -94,5 +103,16 @@
 .send-excel-btn{
     margin-top: 10px;
 
+}
+
+.bg-perfil{
+    background: url(/assets/images/bg-perfil.jpg) center;
+    background-size: cover;
+    color: white;
+}
+
+.blue-header{
+    background-color: #95BBDD;
+    color: black;
 }
 
