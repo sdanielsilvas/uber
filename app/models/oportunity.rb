@@ -98,7 +98,7 @@ class Oportunity < ApplicationRecord
 		items = OportunityItem.where(oportunity_identification:oportunity.identification)
 		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items}
 		begin
-			resp = RestClient.post 'http://10.0.0.13:8084/SubastaV4.2/api/createprocess/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/createprocess/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
 			puts resp
 		rescue RestClient::Exception => e
 			puts e.http_body
