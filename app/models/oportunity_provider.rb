@@ -2,6 +2,7 @@ class OportunityProvider < ApplicationRecord
 
 	def self.finalize(prov)
 		providers = JSON.parse(prov)
+		
 		oportunity = Oportunity.find_by_auction_id(providers.first["opportunityId"])
 		oportunity.status = "Finalizada"
 		oportunity.save
