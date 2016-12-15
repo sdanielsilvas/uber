@@ -14,24 +14,24 @@
     Cordial Saludo,
 
 
-    Es un placer notificarle que su organización ha obtenido el mejor puntaje para la oportunidad  #10Intergrupo
-    generada para el cliente : Intergrupo el dia : 16/12/2016.
+    Es un placer notificarle que su organización ha obtenido el mejor puntaje para la oportunidad  #<%=@oportunity.identification%>
+    generada para el cliente : <%=@oportunity.company_name%> el dia : 16/12/2016.
 
     Los datos de su oferta deben ser mantenidos al cliente en las condiciones con las cuales su organización obtuvo el primer lugar
 
 
-    PRECIO : 10100000
-    HORAS DE SOPORTE :  85
-    HORAS DE CAPACITACION :  85
-    DISPONIBILIDAD DE SOPORTE:  Siete por venticuatro (7x24)
-    SOPORTE LOCAL: Sí
-    HORAS DE MIGRACIÓN: 85
+    PRECIO :<%=@oportunityProvider.price%>
+    HORAS DE SOPORTE :<%=@oportunityProvider.support_hours%>
+    HORAS DE CAPACITACION :<%=@oportunityProvider.training_hours%>
+    DISPONIBILIDAD DE SOPORTE:<%=@oportunityProvider.support_availability%>
+    SOPORTE LOCAL:<%=@oportunityProvider.local_support%>
+    HORAS DE MIGRACIÓN:<%=@oportunityProvider.migration_hours%>
     
 
     Recuerde que este proceso es por tiempo limitado y que usted dispone de 24 horas para contactar al cliente . En caso de que usted no desee continuar con la oferta o no contacte al cliente en el tiempo especificado, procederemos a notificar al canal que obtuvo el mejor puntaje inmediatamente después de usted.
 
-
-    Para confirmar su gestión exitosa  de contacto al cliente de <a href="http://desolate-meadow-84025.herokuapp.com/take_opportunity/3/3">Clic aquí</a>
+    
+    Para confirmar su gestión exitosa  de contacto al cliente de <%=link_to "Click aqui", take_opportunity_url(@oportunity.id,@oportunityProvider.id)%>
 
     Atentamente,
 
