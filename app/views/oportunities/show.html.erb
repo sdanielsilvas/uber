@@ -89,9 +89,9 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th class="opportunity-item-tittle">Posición</th>
-								<th class="opportunity-item-tittle">Nombre del canal</th>
 								
+								<th class="opportunity-item-tittle">Nombre del canal</th>
+								<th class="opportunity-item-tittle">Puntos</th>
 								<th class="opportunity-item-tittle">Precio</th>
 								<th class="opportunity-item-tittle">Horas capacitación</th>
 								<th class="opportunity-item-tittle">Horas soporte</th>
@@ -103,9 +103,9 @@
 						<tbody>
 							<%@oportunityProvider.each do |oportunityprovider|%>
 							<tr>
-								<td><%=oportunityprovider.position%></td>
-								<td><%=oportunityprovider.vendor_name%></td>
 								
+								<td><%=oportunityprovider.vendor_name%></td>
+								<td><%=oportunityprovider.points%></td>
 								<td><%=oportunityprovider.price%></td>
 								<td><%=oportunityprovider.training_hours%></td>
 								<td><%=oportunityprovider.support_hours%></td>
