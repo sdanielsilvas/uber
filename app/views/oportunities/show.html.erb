@@ -1,37 +1,37 @@
 <div class="row oportunity-info">
 	<div class="col-md-3 form-grup">
-		<p class="opportunity-item-tittle">Identificación:</p>
+		<p class="opportunity-item-tittle">Identificación</p>
 		<p><%=@oportunity.identification%></p>
 	</div>
 	<div class="col-md-3">
-		<p class="opportunity-item-tittle">Fuente:</p>
+		<p class="opportunity-item-tittle">Fuente</p>
 		<p><%=@oportunity.oportunity_source%></p>
 	</div>
 	<div class="col-md-3">
-		<p class="opportunity-item-tittle">Socio asignado:</p>
+		<p class="opportunity-item-tittle">Socio asignado</p>
 		<p><%=@oportunity.assigned_partner%></p>
 	</div>
 	<div class="col-md-3">
-		<p class="opportunity-item-tittle">Estado:</p>
+		<p class="opportunity-item-tittle">Estado</p>
 		<%=@oportunity.status%>
 	</div>
 </div>
 <hr>
 <div class="row oportunity-info">
 	<div class="col-md-3 form-grup">
-		<p class="opportunity-item-tittle">Nombre de la compañia:</p>
+		<p class="opportunity-item-tittle">Nombre de la compañia</p>
 		<p><%=@oportunity.company_name%></p>
 	</div>
 	<div class="col-md-3">
-		<p class="opportunity-item-tittle">Email de contacto:</p>
+		<p class="opportunity-item-tittle">Email de contacto</p>
 		<p><%=@oportunity.contact_email%></p>
 	</div>
 	<div class="col-md-3">
-		<p class="opportunity-item-tittle">Telefono:</p>
+		<p class="opportunity-item-tittle">Teléfono</p>
 		<p><%=@oportunity.business_phone%></p>
 	</div>
 	<div class="col-md-3">
-		<p class="opportunity-item-tittle">ID de la subasta:</p>
+		<p class="opportunity-item-tittle">ID de la subasta</p>
 		<%=@oportunity.auction_id%>
 	</div>
 </div>
@@ -52,9 +52,9 @@
 						<thead>
 							<tr>
 								<th class="opportunity-item-tittle">Producto</th>
-								<th class="opportunity-item-tittle">sku</th>
-								<th class="opportunity-item-tittle">cantidad</th>
-								<th class="opportunity-item-tittle">precio</th>
+								<th class="opportunity-item-tittle">Sku</th>
+								<th class="opportunity-item-tittle">Cantidad</th>
+								<th class="opportunity-item-tittle">Precio</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -89,19 +89,21 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
+								<th class="opportunity-item-tittle">Posición</th>
 								<th class="opportunity-item-tittle">Nombre del canal</th>
 								<th class="opportunity-item-tittle">Puntos</th>
 								<th class="opportunity-item-tittle">Precio</th>
 								<th class="opportunity-item-tittle">Horas capacitación</th>
 								<th class="opportunity-item-tittle">Horas soporte</th>
-								<th class="opportunity-item-tittle">soporte local</th>
-								<th class="opportunity-item-tittle">disponibilidad soporte</th>
+								<th class="opportunity-item-tittle">Soporte local</th>
+								<th class="opportunity-item-tittle">Disponibilidad soporte</th>
 								<th class="opportunity-item-tittle">Horas migracion</th>
 							</tr>
 						</thead>
 						<tbody>
 							<%@oportunityProvider.each do |oportunityprovider|%>
 							<tr>
+								<td><%=oportunityprovider.position%></td>
 								<td><%=oportunityprovider.vendor_name%></td>
 								<td><%=oportunityprovider.points%></td>
 								<td><%=oportunityprovider.price%></td>

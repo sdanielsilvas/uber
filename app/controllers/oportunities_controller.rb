@@ -34,7 +34,7 @@ class OportunitiesController < ApplicationController
 	def show
 		@oportunity = Oportunity.find(params[:id])
 		@items = OportunityItem.where(oportunity_identification:@oportunity.identification)
-		@oportunityProvider = OportunityProvider.where(oportunity_identification:@oportunity.identification)
+		@oportunityProvider = OportunityProvider.where(oportunity_identification:@oportunity.identification).order(:position)
 
 	end
 

@@ -66,13 +66,21 @@
 
 }
 
+.navbar-item2{
+    width:200px;
+
+    font-size: 20px;
+    color: black;
+
+}
+
 .selected-navbar-item{
     background-color: #D8B81E !important;
     
 }
 
 .navbar-nav > li > a {
-    padding-left: 70px;
+    text-align: center;
 }
 
 .navbar {
