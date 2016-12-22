@@ -43,7 +43,7 @@ class Oportunity < ApplicationRecord
 	def self.send_winner_email(oportunity)
 		op = OportunityProvider.where(oportunity_identification:oportunity.identification)
 		unless op.blank?
-			op1 = op.where(position:"1").first
+			op1 = op.where(id:oportunity.current_provider).first
 			email = op1.email
 			OportunityMailer.test(email,oportunity,op1).deliver
 		end	
