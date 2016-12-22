@@ -28,10 +28,12 @@
     DISPONIBILIDAD DE SOPORTE:<%=@oportunityProvider.support_availability%>
     SOPORTE LOCAL:<%=@oportunityProvider.local_support%>
     HORAS DE MIGRACIÓN:<%=@oportunityProvider.migration_hours%>
-    
-    <%=link_to "Si", contact_url(@oportunity.id,@oportunityProvider.id)%>
 
-    <%=link_to "No", reject_url(@oportunity.id,@oportunityProvider.id)%>
+    <a href="https://desolate-meadow-84025.herokuapp.com/contact/<%=@oportunity.id%>/<%=@oportunityProvider.id%>">Si</a>
+
+    <a href="https://desolate-meadow-84025.herokuapp.com/reject/<%=@oportunity.id%>/<%=@oportunityProvider.id%>">Si</a>
+    
+    
     
 
     
