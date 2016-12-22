@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Oportunities</title>
+	<%= csrf_meta_tags %>
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+	<div class="row header">
+		<div class="col-md-6 col-md-offset-1"> 
+			<h3><span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo.png" width="164" height="60" alt=""></a></span>| <span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo-go.png" width="164" height="40" alt=""></a></span></h3>  
+		</div>
+	</div>
+	<div class="jumbotron bg-perfil">
+		<div class="container">
+			<div class="text-center">
+				<h1>Gestion de oportunidades</h1>
+				
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in convallis nibh, vitae vestibulum lectus. Proin sed felis consectetur, tempor odio vel, aliquam urna
+		<div class="col-md-12">
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default panel-blue">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+								Resultados
+							</a>
+						</h4>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<div class="row oportunity-info">
+								<div class="col-md-2 form-grup">
+									<p class="opportunity-item-tittle">Precio</p>
+									<p><%=@opportunityProvider.price%></p>
+								</div>
+								<div class="col-md-2">
+									<p class="opportunity-item-tittle">Horas Soporte</p>
+									<p><%=@opportunityProvider.support_hours%></p>
+								</div>
+								<div class="col-md-2">
+									<p class="opportunity-item-tittle">Horas Capacitación</p>
+									<p><%=@opportunityProvider.training_hours%></p>
+								</div>
+								<div class="col-md-2">
+									<p class="opportunity-item-tittle">Disponibilidad</p>
+									<p><%=@opportunityProvider.support_availability%></p>
+								</div>
+								<div class="col-md-2">
+									<p class="opportunity-item-tittle">Soporte Local</p>
+									<p><%=@opportunityProvider.local_support%></p>
+								</div>
+								<div class="col-md-2">
+									<p class="opportunity-item-tittle">Horas Migración</p>
+									<p><%=@opportunityProvider.migration_hours%></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default panel-blue">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+								Items
+							</a>
+						</h4>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<div class="row oportunity-info">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th class="opportunity-item-tittle">Producto</th>
+											<th class="opportunity-item-tittle">Sku</th>
+											<th class="opportunity-item-tittle">Cantidad</th>
+											<th class="opportunity-item-tittle">Precio</th>
+										</tr>
+									</thead>
+									<tbody>
+										<%@items.each do |item|%>
+										<tr>
+											<td><%=item.product%></td>
+											<td><%=item.sku%></td>
+											<td><%=item.quantity%></td>
+											<td><%=item.unit_price%></td>
+										</tr>
+										<%end%>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
+

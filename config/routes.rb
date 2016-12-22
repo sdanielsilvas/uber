@@ -27,5 +27,9 @@ Rails.application.routes.draw do
 
 	get 'take_opportunity/:id/:oprovider', to:"oportunities#take", as:'take_opportunity'
 
+	get 'contact/:id/:oprovider', to:"providers#contact", as:'contact'
+
+	get 'reject/:id/:oprovider', to:"providers#reject", as:'reject'
+
 	get 'provider/:id', to:'providers#show', as:'show_provider'
 end

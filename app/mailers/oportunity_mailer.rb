@@ -7,5 +7,13 @@ class OportunityMailer < ApplicationMailer
 		@url  = 'http://example.com/login'
 		mail(to: to, subject: 'Resultado Subasta')
 	end
+
+	def client_email(to,op,oprovider)
+		
+		@oportunity = op
+		@oportunityProvider = oprovider
+		@url  = 'http://example.com/login'
+		mail(to: to, subject: 'Lo van a contactar')
+	end
 end
 

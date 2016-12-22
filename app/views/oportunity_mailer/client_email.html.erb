@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+   p {
+    white-space: pre;
+    color: black;
+  }
+</style>
+</head>
+<body>
+  <p>
+  este es el opp provider <%=@oportunityProvider.id%>
+  a ud lo va a contactar este man si o no
+    Cordial Saludo,
+
+
+    la oportunidad de la empresa <%=@oportunity.company_name%> oportunidad es: #<%=@oportunity.identification%>
+    
+
+    eso es lo que oferto ese man
+
+
+    PRECIO :<%=@oportunityProvider.price%>
+    HORAS DE SOPORTE :<%=@oportunityProvider.support_hours%>
+    HORAS DE CAPACITACION :<%=@oportunityProvider.training_hours%>
+    DISPONIBILIDAD DE SOPORTE:<%=@oportunityProvider.support_availability%>
+    SOPORTE LOCAL:<%=@oportunityProvider.local_support%>
+    HORAS DE MIGRACIÓN:<%=@oportunityProvider.migration_hours%>
+    
+    <%=link_to "Si", contact_url(@oportunity.id,@oportunityProvider.id)%>
+
+    <%=link_to "No", reject_url(@oportunity.id,@oportunityProvider.id)%>
+    
+
+    
+    
+
+    Atentamente,
+
+
+    Equipo gestion de oportunidades
+    Microsoft
+  </p>
+</body>
+</html>

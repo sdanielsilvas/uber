@@ -31,6 +31,15 @@ class Oportunity < ApplicationRecord
 		end	
 	end
 
+	def self.send_client_email(oportunity)
+		op = OportunityProvider.where(oportunity_identification:oportunity.identification)
+		unless op.blank?
+			op1 = op.where(id:oportunity.current_provider).first
+			email = oportunity.contact_email
+			OportunityMailer.client_email(email,oportunity,op1).deliver
+		end		
+	end
+
 	def self.send_winner_email(oportunity)
 		op = OportunityProvider.where(oportunity_identification:oportunity.identification)
 		unless op.blank?

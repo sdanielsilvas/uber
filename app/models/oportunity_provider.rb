@@ -29,7 +29,10 @@ class OportunityProvider < ApplicationRecord
 				end
 			end
 			op = OportunityProvider.where(provider_nit:provider.nit,oportunity_identification:oportunity.identification)
-			
+			if  (oportunityprovider["offerPosition"] == 1)
+				oportunity.current_provider = op.first.id
+				oportunity.save
+			end
 			op.update(provider_nit:provider.nit,oportunity_identification:oportunity.identification,
 				points:oportunityprovider["points"],email:oportunityprovider["channelEmail"],
 				position:oportunityprovider["offerPosition"],vendor_name:provider.name,
@@ -41,7 +44,7 @@ class OportunityProvider < ApplicationRecord
 				migration_hours:@migration_hours)
 			
 		end
-		Oportunity.send_winner_email(oportunity)
+		Oportunity.send_client_email(oportunity)
 		return oportunity.status
 	end
 

@@ -80,4 +80,8 @@ class OportunitiesController < ApplicationController
 		@selected = 'opportunities'
 	end
 
+	def send_client_email
+		response = Oportunity.send_client_email
+	end
+
 end

@@ -1,4 +1,4 @@
-<%if !@oportunities.empty?%>
+
 <div class="row">
 	<%= form_tag '/',method: :get do %>
 	<div class="form-group">
@@ -23,7 +23,7 @@
 	<% end %>
 </div>
 <hr>
-
+<%if !@oportunities.empty?%>
 <div class="col-md-12">
 	<table class="table table-striped">
 		<thead class="blue-header">
@@ -57,34 +57,35 @@
 </div>
 <div class="col-md-12">
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Cargar XLS</h4>
-				</div>
-				<%= form_tag '/load_oportunity', multipart: true do %>
-				<div class="row" style="margin-bottom:15px;">
-					
-					<div class="modal-body">
-						<div class="col-md-12">
-							<span class="btn btn-default">
-								<%= file_field_tag "file" %>
-							</span>
-						</div>
-
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-					<%= submit_tag('Cargar',class:'btn btn-warning btn-yellow') %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+	
 </div>
 <%else%>
 No hay oportunidades!
 <%end%>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Cargar XLS</h4>
+			</div>
+			<%= form_tag '/load_oportunity', multipart: true do %>
+			<div class="row" style="margin-bottom:15px;">
+				
+				<div class="modal-body">
+					<div class="col-md-12">
+						<span class="btn btn-default">
+							<%= file_field_tag "file" %>
+						</span>
+					</div>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<%= submit_tag('Cargar',class:'btn btn-warning btn-yellow') %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

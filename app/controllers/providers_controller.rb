@@ -2,6 +2,8 @@ class ProvidersController < ApplicationController
 
 	before_filter :set_selected
 
+	layout false, only: [:contact,:reject]
+
 	def index
 		@providers = Provider.all
 	end
@@ -17,5 +19,20 @@ class ProvidersController < ApplicationController
 		op.each do |o|
 			@oportunities << Oportunity.find_by_identification(o.oportunity_identification)
 		end
+	end
+
+	def contact
+		@opportunity = Oportunity.find(params[:id])
+		@opportunityProvider = OportunityProvider.find(params[:oprovider])
+		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)
+		Provider.contact(@opportunity,@opportunityProvider)
+	end
+
+	def reject
+		@opportunity = Oportunity.find(params[:id])
+		@opportunityProvider = OportunityProvider.find(params[:oprovider])
+		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)
+		
+		Provider.reject(@opportunity,@opportunityProvider)
 	end
 end
