@@ -13,7 +13,7 @@ class OportunityMailer < ApplicationMailer
 		@oportunity = op
 		@oportunityProvider = oprovider
 		@url  = 'http://example.com/login'
-		mail(to: to, subject: 'Lo van a contactar')
+		mail(to: to, subject: 'Licencias microsoft')
 	end
 end
 
