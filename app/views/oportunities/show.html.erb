@@ -63,7 +63,7 @@
 								<td><%=item.product%></td>
 								<td><%=item.sku%></td>
 								<td><%=item.quantity%></td>
-								<td><%=item.unit_price%></td>
+								<td><%=number_to_currency(item.unit_price)%></td>
 							</tr>
 							<%end%>
 						</tbody>
