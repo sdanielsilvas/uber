@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	get 'test', to:'oportunities#test'
 	put 'oportunities', to:"oportunities#update"
 	get 'finalize_oportunity/:id', to: "oportunities#finalize", as:'finalize_oportunity'
+	post 'contact_default_partner/:id', to: "oportunities#default_partner", as:'contact_default_partner'
 
 	#providers routes
 	get 'providers', to:"providers#index"

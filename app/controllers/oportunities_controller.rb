@@ -84,4 +84,11 @@ class OportunitiesController < ApplicationController
 		response = Oportunity.send_client_email
 	end
 
+	def default_partner
+		@oportunity = Oportunity.find(params[:id])
+		@oportunity.status = 'CANCELADA'
+		@oportunity.save
+		redirect_to root_path	
+	end
+
 end
