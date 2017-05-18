@@ -24,7 +24,9 @@ $( document ).ready(function() {
 		e.preventDefault();
 		console.log('si dio');
 		$('#myModal').modal('show')    
-	})
+	});
+
+	$('.tag-tooltip').tooltip();  
 
 	
 });
