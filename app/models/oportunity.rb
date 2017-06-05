@@ -1,8 +1,7 @@
 
-
 class Oportunity < ApplicationRecord
 	validates_uniqueness_of :identification
-	#belongs_to :user
+	belongs_to :user
 	#has_many :items, class_name: "OportunityItem", foreign_key: "oportunity_identification"
 	#has_and_belongs_to_many :providers
 
@@ -12,9 +11,9 @@ class Oportunity < ApplicationRecord
 
 
 
-	def self.readFile(file_path)
+	def self.readFile(file_path,user)
 		xlsx = Roo::Spreadsheet.open(file_path, extension: :xlsx)
-		createOportunities(xlsx)
+		createOportunities(xlsx,user)
 		return xlsx.info
 	end
 
@@ -52,15 +51,15 @@ class Oportunity < ApplicationRecord
 
 	private
 
-	def self.createOportunities(sheet)
+	def self.createOportunities(sheet,user)
 		2.upto(sheet.last_row) do |row_index|
 			row = sheet.sheet(0).row(row_index)
 			auction_id = row[0].to_s+row[4]
-			oportunity = Oportunity.new(identification:row[0],oportunity_source:row[1],assigned_partner:row[2],
+			oportunity = Oportunity.new(user_id:user,identification:row[0],oportunity_source:row[1],assigned_partner:row[2],
 				status:row[3],company_name:row[4],contact_email:row[18],business_phone:row[19],auction_id:auction_id)
 			if oportunity.save
 				if (createOportunityItem(sheet,oportunity))
-					send_oportunity(oportunity)
+					#send_oportunity(oportunity)
 					puts "oportunidad creada"
 				else
 					puts "borrando la oportunidad" + oportunity.identification

@@ -61,7 +61,7 @@ class OportunitiesController < ApplicationController
 
 	def load
 		#Oportunity.readFile(nil)
-		info = Oportunity.readFile(params[:file].tempfile)
+		info = Oportunity.readFile(params[:file].tempfile,current_user.id)
 		redirect_to root_path
 	end
 
