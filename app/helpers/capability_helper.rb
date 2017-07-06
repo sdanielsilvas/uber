@@ -1,0 +1,2 @@
+module CapabilityHelper
+end

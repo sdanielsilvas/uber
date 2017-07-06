@@ -13,6 +13,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "multi-select.css";
 
  .alert-error {
     background-color: #f2dede;
@@ -135,8 +136,35 @@
   background: rgba(197, 197, 197, 0.64);
   max-width: 360px;
   margin: 0 auto 100px;
-margin-top: 2%;
+  margin-top: 2%;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.table-fixed{
+  width: 100%;
+  background-color: #f3f3f3;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+  tbody{
+    td{
+      float:left;
+    }
+  }
+  thead {
+    tr{
+      th{
+        float:left;
+       background-color: #f39c12;
+       border-color:#e67e22;
+      }
+    }
+  }
 }

@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_one :credential
   has_many :oportunities
+  has_many :templates
 end

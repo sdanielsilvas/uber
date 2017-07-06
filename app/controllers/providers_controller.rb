@@ -8,6 +8,15 @@ class ProvidersController < ApplicationController
 		@providers = Provider.all
 	end
 
+	def new
+		@provider = Provider.new
+	end
+
+	def create
+		Provider.create(name:params['name'],email:params['email'])
+		redirect_to providers_path
+	end
+
 	def set_selected
 		@selected = 'providers'
 	end
@@ -26,6 +35,14 @@ class ProvidersController < ApplicationController
 		@opportunityProvider = OportunityProvider.find(params[:oprovider])
 		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)
 		Provider.contact(@opportunity,@opportunityProvider)
+	end
+	def choose
+		@opportunity = Oportunity.find(params[:id])
+		@opportunity.status = 'Elegida'
+		@opportunity.save
+		@opportunityProvider = OportunityProvider.find(params[:oprovider])
+		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)
+		Provider.choose(@opportunity,@opportunityProvider)
 	end
 
 	def reject

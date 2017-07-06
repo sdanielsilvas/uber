@@ -15,5 +15,12 @@ class OportunityMailer < ApplicationMailer
 		@url  = 'http://example.com/login'
 		mail(to: to, subject: 'Licencias microsoft')
 	end
+
+	def resellers(to,op,resellers)
+		@oportunity = op
+		@resellers = resellers
+		@url  = 'http://example.com/login'
+		mail(to: 'sdanielsilvas@gmail.com', subject: 'Los resellers')
+	end
 end
 

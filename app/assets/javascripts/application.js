@@ -13,21 +13,28 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.multi-select.js
 //= require_tree .
 
-$( document ).ready(function() {
-	console.log($(".alert" ));
-	$(".alert-success, .alert-info, .alert-notice" ).fadeOut(4000);
 
+$( document ).ready(function() {
 	$("#charge-btn").click(function(e){
 		e.preventDefault();
 		console.log('si dio');
 		$('#myModal').modal('show')    
 	});
 
+	$('#add-criteria').click(function(e){
+		e.preventDefault();
+		var inputString = 'hola'
+		$('#final-default-criteria').append(inputString);
+	})
+	$('#my-select').multiSelect();
 	$('.tag-tooltip').tooltip();  
 
-	
 });
 
+function showTemplateModal(element){
+	$('#oportunity_id').val(element);
+	$('#templates-modal').modal('show')   
+}

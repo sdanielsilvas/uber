@@ -1,0 +1,39 @@
+<span style="padding-right: 5px;"><%=link_to  'Nuena Capacidad', capability_path,class:"btn btn-primary"%></span>
+<table class="table table-fixed">
+	<thead>
+		<tr>
+			<th class="col-xs-5">Name</th>
+			<th class="col-xs-5">Description</th>
+			<th class="col-xs-2">actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%@capabilities.each do |capability|%>
+		<tr>
+			<td class="col-xs-5"><%=capability.name%></td>
+			<td class="col-xs-5"><%=capability.description%></td>
+			<td class="col-xs-2">Bar</td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+<hr>
+<span style="padding-right: 5px;"><%=link_to  'Nuena Capacidad', product_path,class:"btn btn-primary"%></span>
+<table class="table table-fixed">
+	<thead>
+		<tr>
+			<th class="col-xs-5">Name</th>
+			<th class="col-xs-5">actions</th>
+			<th class="col-xs-2">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%@products.each do |product|%>
+		<tr>
+			<td class="col-xs-5"><%=product.name%></td>
+			<td class="col-xs-5"><%=product.description%></td>
+			<td class="col-xs-2">Bar</td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>

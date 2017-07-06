@@ -10,6 +10,10 @@ class Provider < ApplicationRecord
 		Oportunity.send_winner_email(opportunity)
 	end
 
+	def self.choose(opportunity,opportunityProvider)
+		OportunityMailer.resellers("ssilva@intergrupo.com",oportunity,resellers).deliver
+	end
+
 	def self.reject(opportunity,opportunityProvider)
 		op = OportunityProvider.where(oportunity_identification:opportunity.identification)
 		current  = op.where(id:opportunity.current_provider)
@@ -25,5 +29,21 @@ class Provider < ApplicationRecord
 			
 			Oportunity.send_client_email(opportunity)
 		end
+	end
+
+	def self.createProviders(prov,oportunity)
+		providers = JSON.parse(prov)
+		oportunity.status = "A dedo?"
+		oportunity.save
+		JSON.parse(providers['resellers']).each do |oportunityprovider|
+			provider = Provider.find_by_nit(oportunityprovider["providerId"])
+			if provider.nil?
+				provider = Provider.create(nit:oportunityprovider["providerId"],name:oportunityprovider["providerName"])
+			end
+			op = OportunityProvider.where(provider_nit:provider.nit,oportunity_identification:oportunity.identification)
+			if op.blank?
+				OportunityProvider.create(provider_nit:provider.nit,oportunity_identification:oportunity.identification,email:oportunityprovider["channelEmail"],vendor_name:provider.name)
+			end
+		end	
 	end
 end

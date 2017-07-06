@@ -13,9 +13,17 @@ Rails.application.routes.draw do
 	put 'oportunities', to:"oportunities#update"
 	get 'finalize_oportunity/:id', to: "oportunities#finalize", as:'finalize_oportunity'
 	post 'contact_default_partner/:id', to: "oportunities#default_partner", as:'contact_default_partner'
+	get 'check_resellers/:id', to: "oportunities#check_resellers", as:'check_resellers'
+	get 'sendtoauction/:id', to: "oportunities#send_to_auction", as:'sendtoauction'
+	
+	#post 'send_opportunity'
 
 	#providers routes
 	get 'providers', to:"providers#index"
+
+	get 'provider', to:"providers#new"
+
+	post 'provider', to:"providers#create"
 
 	#oportunity providers routes
 	post 'oportunity_providers', to:"oportunity_providers#finalize"
@@ -30,7 +38,28 @@ Rails.application.routes.draw do
 
 	get 'contact/:id/:oprovider', to:"providers#contact", as:'contact'
 
+	get 'choose/:id/:oprovider', to:"providers#choose", as:'choose'
+
 	get 'reject/:id/:oprovider', to:"providers#reject", as:'reject'
 
 	get 'provider/:id', to:'providers#show', as:'show_provider'
+
+	#templates routes
+	get 'templates',to:'templates#index'
+
+	get 'template',to:'templates#new'
+
+	post 'template',to:'templates#create'
+
+	#capability routes
+	get 'capabilities', to:'capabilities#index'
+
+	get 'capability', to:'capabilities#new'
+
+	post 'capability', to:'capabilities#create'
+
+	#products routes
+	get 'product', to:'products#new'
+
+	post 'product', to:'products#create'
 end

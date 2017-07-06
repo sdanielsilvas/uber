@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222153532) do
+ActiveRecord::Schema.define(version: 20170630155849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "capabilities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "capabilities_products", force: :cascade do |t|
+    t.integer "capability_id"
+    t.integer "product_id"
+    t.index ["capability_id"], name: "index_capabilities_products_on_capability_id", using: :btree
+    t.index ["product_id"], name: "index_capabilities_products_on_product_id", using: :btree
+  end
 
   create_table "credentials", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -23,6 +37,11 @@ ActiveRecord::Schema.define(version: 20161222153532) do
     t.string   "password"
     t.string   "key"
     t.string   "iv"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "oportunities", force: :cascade do |t|
@@ -38,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161222153532) do
     t.string   "auction_id"
     t.datetime "finalization_date"
     t.string   "current_provider"
+    t.integer  "user_id"
   end
 
   create_table "oportunity_items", force: :cascade do |t|
@@ -66,12 +86,30 @@ ActiveRecord::Schema.define(version: 20161222153532) do
     t.string   "local_support"
     t.string   "support_availability"
     t.string   "migration_hours"
+    t.string   "status"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "providers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "nit"
+    t.string   "name"
+    t.string   "email"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.json     "criteria"
+    t.integer  "user_id"
+    t.string   "company"
     t.string   "name"
   end
 

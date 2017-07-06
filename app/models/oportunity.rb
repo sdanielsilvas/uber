@@ -1,8 +1,9 @@
 
 class Oportunity < ApplicationRecord
+	#self.primary_key = "identification"
 	validates_uniqueness_of :identification
 	belongs_to :user
-	#has_many :items, class_name: "OportunityItem", foreign_key: "oportunity_identification"
+	has_many :oportunity_items, foreign_key: :oportunity_identification,primary_key: :identification
 	#has_and_belongs_to_many :providers
 
 	ALGORITHM = "AES-128-CBC"
@@ -47,6 +48,13 @@ class Oportunity < ApplicationRecord
 			OportunityMailer.test(email,oportunity,op1).deliver
 		end	
 	end
+
+	def self.send_resellers_email(oportunity,resellers)
+		op = OportunityProvider.where(oportunity_identification:oportunity.identification)
+		unless op.blank?
+			OportunityMailer.resellers("ssilva@intergrupo.com",oportunity,resellers).deliver
+		end	
+	end
 	
 
 	private
@@ -56,10 +64,18 @@ class Oportunity < ApplicationRecord
 			row = sheet.sheet(0).row(row_index)
 			auction_id = row[0].to_s+row[4]
 			oportunity = Oportunity.new(user_id:user,identification:row[0],oportunity_source:row[1],assigned_partner:row[2],
-				status:row[3],company_name:row[4],contact_email:row[18],business_phone:row[19],auction_id:auction_id)
+				status:'Pendiente',company_name:row[4],contact_email:row[18],business_phone:row[19],auction_id:auction_id)
+			
+			#binding.pry
+			
+
 			if oportunity.save
 				if (createOportunityItem(sheet,oportunity))
 					#send_oportunity(oportunity)
+					capabilities = getCapabilities(sheet,oportunity)
+					resellers = sendCapabilities(capabilities)
+					Provider.createProviders(resellers,oportunity)
+					send_resellers_email(oportunity,JSON.parse(resellers))
 					puts "oportunidad creada"
 				else
 					puts "borrando la oportunidad" + oportunity.identification
@@ -68,7 +84,60 @@ class Oportunity < ApplicationRecord
 			else
 				puts oportunity.errors
 			end
+			
 		end
+	end
+
+	def self.getCapabilities(sheet,oportunity)
+		capabilities = []
+		2.upto(sheet.sheet(1).last_row) do |item_index| 
+			item = sheet.sheet(1).row(item_index)
+			if item[0].to_s==oportunity.identification
+				product = Product.find_by_name(item[1])
+				unless product.nil?
+					capabilities << product.capabilities
+				end
+			end
+		end
+		return capabilities
+	end
+
+	def self.getOportunityCapabilities(oportunity)
+		capabilities = []
+		items = oportunity.oportunity_items
+		items.each do |item| 
+			product = Product.find_by_name(item.product)
+			unless product.nil?
+				capabilities << product.capabilities
+			end
+		end
+		message = {}
+		i = 0
+		capabilities.each do |capability|
+			message[i] = []
+			capability.each do |c|
+				message[i] << {valor:c.name}
+			end
+			i = i + 1
+		end
+		return message
+	end
+
+	def self.sendCapabilities(capabilities)
+		message = {}
+		message["items"]={}
+		i = 0
+		capabilities.each do |capability|
+			message["items"][i] = []
+			capability.each do |c|
+				message["items"][i] << {valor:c.name}
+			end
+			i = i + 1
+		end
+		msg = message.to_json
+		resp = RestClient.get('http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/resellers'+'?jsson='+msg)
+		#resp = "{\"resellers\":[{\"providerId\":\"FOR-ASOC-TMP-785\",\"channelEmail\":\"oferenteprueba001@gmail.com\",\"channelName\":\"Prueba SEW 001\",\"offerPosition\":0},{\"providerId\":\"FOR-ASOC-TMP-786\",\"channelEmail\":\"oferenteprueba002@gmail.com\",\"channelName\":\"Prueba SEW 002\",\"offerPosition\":0}]}"
+		return resp
 	end
 
 	def self.createOportunityItem(sheet,oportunity)
@@ -104,9 +173,12 @@ class Oportunity < ApplicationRecord
 		puts "asi lo encripta en base 64"
 		puts password_crypt
 		items = OportunityItem.where(oportunity_identification:oportunity.identification)
-		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items}
+		capabilities = getOportunityCapabilities(oportunity)
+		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items,products:capabilities}
 		begin
-			resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/createprocess/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			#resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			resp = RestClient.post 'http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			puts '####################### Response ###################################'
 			puts resp
 		rescue RestClient::Exception => e
 			puts e.http_body

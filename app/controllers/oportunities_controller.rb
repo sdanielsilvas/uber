@@ -4,7 +4,7 @@ class OportunitiesController < ApplicationController
 
 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants,:test_email,:take] 
 	
-	layout false, only: [:take]
+	layout false, only: [:take,:check_resellers]
 
 	before_filter :set_selected
 	
@@ -15,15 +15,16 @@ class OportunitiesController < ApplicationController
 	end
 
 	def index
+		@templates = current_user.templates
 		unless (params[:status].nil? || params[:status]=="All")
-			@oportunities = Oportunity.where(status:params[:status]).paginate(page: params[:page],per_page: 8)
+			@oportunities = current_user.oportunities.where(status:params[:status]).paginate(page: params[:page],per_page: 8)
 			@oportunities = @oportunities.starts_with(params[:starts_with]) if params[:starts_with].present?
 
 		else
-			@oportunities = Oportunity.all.paginate(page: params[:page],per_page: 8)
+			@oportunities = current_user.oportunities.all.paginate(page: params[:page],per_page: 8)
 			@oportunities = @oportunities.starts_with(params[:starts_with]) if params[:starts_with].present?
 		end 
-		@status = ["All"] + Oportunity.all.map{|x|x.status}.uniq
+		@status = ["All"] + current_user.oportunities.all.map{|x|x.status}.uniq
 	end
 
 
@@ -33,7 +34,7 @@ class OportunitiesController < ApplicationController
 
 	def show
 		@oportunity = Oportunity.find(params[:id])
-		@items = OportunityItem.where(oportunity_identification:@oportunity.identification)
+		@items = @oportunity.oportunity_items
 		@oportunityProvider = OportunityProvider.where(oportunity_identification:@oportunity.identification).order(:position)
 
 	end
@@ -48,7 +49,6 @@ class OportunitiesController < ApplicationController
 		auction_id = json["auction_id"]
 		oportunity = Oportunity.find_by_auction_id(auction_id)
 		@updated_oportunity = Oportunity.update(oportunity.id, :status => status)
-
 		render json: @updated_oportunity
 	end
 
@@ -89,6 +89,20 @@ class OportunitiesController < ApplicationController
 		@oportunity.status = 'CANCELADA'
 		@oportunity.save
 		redirect_to root_path	
+	end
+
+	def check_resellers
+		@opportunity = Oportunity.find(params['id'])
+		@resellers = OportunityProvider.where(oportunity_identification:@opportunity.identification)
+		
+	end
+
+	def send_to_auction
+		@oportunity = Oportunity.find(params[:id])
+		@oportunity.status = 'Iniciando'
+		@oportunity.save
+		Oportunity.send_oportunity(@oportunity)
+		#redirect_to root_path
 	end
 
 end

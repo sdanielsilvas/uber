@@ -2,7 +2,6 @@ class OportunityProvider < ApplicationRecord
 
 	def self.finalize(prov)
 		providers = JSON.parse(prov)
-		
 		oportunity = Oportunity.find_by_auction_id(providers.first["opportunityId"])
 		oportunity.status = "Finalizada"
 		oportunity.save
@@ -59,8 +58,8 @@ class OportunityProvider < ApplicationRecord
 				provider = Provider.create(nit:oportunityprovider["providerId"],name:oportunityprovider["providerName"])
 			end
 			op = OportunityProvider.where(provider_nit:provider.nit,oportunity_identification:oportunity.identification)
+			
 			if op.blank?
-
 				oportunityprovider["criteriaList"].each do |criteria|
 					case criteria["criteriaId"]
 					when "1"
@@ -86,7 +85,37 @@ class OportunityProvider < ApplicationRecord
 					local_support:@local_support,
 					support_availability:@support_availability,
 					migration_hours:@migration_hours)
+			else
+				op = OportunityProvider.find(provider_nit:provider.nit,oportunity_identification:oportunity.identification)
+				oportunityprovider["criteriaList"].each do |criteria|
+					case criteria["criteriaId"]
+					when "1"
+						@price = criteria["offertValue"]
+					when "2"
+						@training_hours = criteria["offertValue"]
+					when "3"
+						@support_hours = criteria["offertValue"]
+					when "4"
+						@local_support = criteria["ScaleValue"]
+					when "5"
+						@support_availability = criteria["ScaleValue"]
+					else
+						@migration_hours = criteria["offertValue"]
+					end
+				end
+				op.points = oportunityprovider["points"]
+				op.position = oportunityprovider["offerPosition"]
+				op.vendor_name:provider.name
+				op.price = @price
+				op.training_hours = @training_hours
+				op.support_hours = @support_hours
+				op.local_support = @local_support
+				op.support_availability = @support_availability
+				op.migration_hours = @migration_hours
+				op.save
 			end
 		end
 	end
+
+
 end

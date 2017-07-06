@@ -12,6 +12,8 @@
       <li class="navbar-item"><%= link_to 'Opportunities', oportunities_path, class:"navbar-item2 navbar-item-yellow  #{'selected-navbar-item' if @selected=='opportunities'}"%></li>
       
       <li class="navbar-item"><%= link_to 'Resellers', providers_path, class:"navbar-item2 navbar-item-yellow #{'selected-navbar-item' if @selected=='providers'}"%></li>
+      <li class="navbar-item"><%= link_to 'Templates', templates_path, class:"navbar-item2 navbar-item-yellow #{'selected-navbar-item' if @selected=='templates'}"%></li>
+      <li class="navbar-item"><%= link_to 'Capability and items', capabilities_path, class:"navbar-item2 navbar-item-yellow #{'selected-navbar-item' if @selected=='templates'}"%></li>
     </ul>
     <div class="col-md-3 pull-right" style="margin-top: -8px;">
       <h3><%= link_to(destroy_user_session_path, :method => :delete) do%>
