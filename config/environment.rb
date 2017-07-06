@@ -5,13 +5,13 @@ require_relative 'application'
 Rails.application.initialize!
 
 #config.action_mailer.default_url_options = { :host => 'https://desolate-meadow-84025.herokuapp.com' }
-# ActionMailer::Base.smtp_settings = {
-#   :user_name => 'Intergrupo',
-#   :password => 'Intergrupo2016',
-#   :domain => 'herokuapp.com',
-#   :address => 'smtp.sendgrid.net',
-#   :port => 587,
-#   :authentication => :plain,
-#   :enable_starttls_auto => true
-# }
+ActionMailer::Base.smtp_settings = {
+  :user_name => 'Intergrupo',
+  :password => 'Intergrupo2016',
+  :domain => 'herokuapp.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 
