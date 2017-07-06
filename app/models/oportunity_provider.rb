@@ -86,7 +86,7 @@ class OportunityProvider < ApplicationRecord
 					support_availability:@support_availability,
 					migration_hours:@migration_hours)
 			else
-				op = OportunityProvider.find(provider_nit:provider.nit,oportunity_identification:oportunity.identification)
+				op = OportunityProvider.where(provider_nit:provider.nit,oportunity_identification:oportunity.identification).first
 				oportunityprovider["criteriaList"].each do |criteria|
 					case criteria["criteriaId"]
 					when "1"
