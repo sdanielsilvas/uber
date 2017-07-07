@@ -66,6 +66,7 @@ class Oportunity < ApplicationRecord
 			oportunity = Oportunity.new(user_id:user,identification:row[0],oportunity_source:row[1],assigned_partner:row[2],
 				status:'Pendiente',company_name:row[4],contact_email:row[18],business_phone:row[19],auction_id:auction_id,template_id:row[25])
 			
+			
 			#binding.pry
 			
 
