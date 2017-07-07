@@ -48,7 +48,6 @@
 				<td><%=oportunity.contact_email%></td>
 				<td><span style="padding-right: 5px;"><%=link_to  raw("<i class=\" glyphicon glyphicon-log-in\"></i>"), show_oportunity_path(oportunity),class:"btn btn-primary"%></span><span>
 					<button id='choose-template-btn' class="btn btn-default" onclick="showTemplateModal(<%=oportunity.id%>)"><span><i class="glyphicon glyphicon-send"></i></span></button>
-					<%=link_to  raw("<i class=\" glyphicon glyphicon-send\"></i>"), contact_default_partner_path(oportunity),class:"btn btn-danger tag-tooltip",:data => {:toggle=>"tooltip"},'data-original-title' => "Send to default partner",'data-placement' => 'top', method: :post%>
 				</span></td>
 			</tr>
 			<%end%>

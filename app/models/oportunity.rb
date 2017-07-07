@@ -176,7 +176,7 @@ class Oportunity < ApplicationRecord
 		puts password_crypt
 		items = OportunityItem.where(oportunity_identification:oportunity.identification)
 		capabilities = getOportunityCapabilities(oportunity)
-		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items,products:capabilities,template:oportunity.template_id}
+		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items,products:capabilities,template:oportunity.template_id.to_s}
 		begin
 			resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
 			#resp = RestClient.post 'http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
