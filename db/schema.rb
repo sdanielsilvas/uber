@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630155849) do
+ActiveRecord::Schema.define(version: 20170707161459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170630155849) do
     t.datetime "finalization_date"
     t.string   "current_provider"
     t.integer  "user_id"
+    t.integer  "template_id"
   end
 
   create_table "oportunity_items", force: :cascade do |t|

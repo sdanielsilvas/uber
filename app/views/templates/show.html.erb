@@ -1,0 +1,68 @@
+<%if @template.name == 'plantilla europa'%>
+<div class="row">
+	<div class="col-md-2">
+		Nombre:
+	</div>
+	<div class="col-md-10">
+		<%=@template.name%>
+	</div>
+	<div class="col-md-2">
+	Precio:
+	</div>
+	<div class="col-md-2">
+		25%
+	</div>
+	<div class="col-md-2 col-md-offset-2">
+		Horas de Soporte
+	</div>
+	<div class="col-md-4">
+		25%
+	</div>
+	<div class="col-md-2">
+		Disponibilidad del soporte:
+	</div>
+	<div class="col-md-2">
+		25%:
+	</div>
+	<div class="col-md-2 col-md-offset-2">
+		Horas de migracion:
+	</div>
+	<div class="col-md-4">
+		25%:
+	</div>
+</div>
+<%else%>
+<div class="row">
+	<div class="col-md-2">
+		Nombre:
+	</div>
+	<div class="col-md-10">
+		<%=@template.name%>
+	</div>
+	<div class="col-md-2">
+	Precio:
+	</div>
+	<div class="col-md-2">
+		30%
+	</div>
+	<div class="col-md-2 col-md-offset-2">
+		Horas de Soporte
+	</div>
+	<div class="col-md-4">
+		20%
+	</div>
+	<div class="col-md-2">
+		Soporte local:
+	</div>
+	<div class="col-md-2">
+		30%:
+	</div>
+	<div class="col-md-2  col-md-offset-2">
+		Horas de migracion:
+	</div>
+	<div class="col-md-4">
+		20%:
+	</div>
+</div>
+<%end%>
+

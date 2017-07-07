@@ -47,9 +47,11 @@ Rails.application.routes.draw do
 	#templates routes
 	get 'templates',to:'templates#index'
 
-	get 'template',to:'templates#new'
+	get 'templates/new',to:'templates#new'
 
 	post 'template',to:'templates#create'
+
+	get 'templates/:id', to:'templates#show', as:'show_template'
 
 	#capability routes
 	get 'capabilities', to:'capabilities#index'

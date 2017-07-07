@@ -12,6 +12,10 @@ class TemplatesController < ApplicationController
 		template = current_user.templates.create(criteria:{ payload:[params[:criteria]]},name:params[:template_name])
 	end
 
+	def show
+		@template = Template.find(params[:id])
+	end
+
 	def update
 	end
 

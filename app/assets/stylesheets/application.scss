@@ -16,119 +16,118 @@
  @import "multi-select.css";
 
  .alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
 }
 
 .alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
 }
 
 .alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
 }
 
 .alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
 }
 .log-out{
-    padding-top:15px; 
+  padding-top:15px; 
 }
 
 .blue-navbar {
-    background-color: #E5E5E5;
-    
+  background-color: #E5E5E5;
+
 }
 
 .btn-yellow{
-    background-color: #D8B81E;
+  background-color: #D8B81E;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: white;
-    font-size: 20px;
+  color: white;
+  
 }
 .navbar-item{
-    width:200px;
-    padding-left: 70px;
-    font-size: 20px;
-    color: black;
+  width:200px;
+  padding-left: 70px;
+  font-size: 20px;
+  color: black;
 
 }
 
 .navbar-item2{
-    width:200px;
+  width:200px;
 
-    font-size: 20px;
-    color: black;
+  font-size: 20px;
+  color: black;
 
 }
 
 .selected-navbar-item{
-    background-color: #D8B81E !important;
-    
+ background:linear-gradient(rgb(229,197,43),rgb(189,156,0)) !important;
+
 }
 
 .navbar-nav > li > a {
-    text-align: center;
 }
 
 .navbar {
-    border-radius: 0px;
+  border-radius: 0px;
 }
 
 .filters-button {
-    margin-top: 26px;
+  margin-top: 26px;
 }
 
 .opportunity-item-tittle {
-    font-weight: 900;
-    font-size: 16px;
-    color: rgb(58, 58, 60);
+  font-weight: 900;
+  font-size: 16px;
+  color: rgb(58, 58, 60);
 }
 
 .panel-blue > .panel-heading {
-    color: #FFFCFC;
-    background-color: #95BBDD;
+  color: #FFFCFC;
+  background-color: #95BBDD;
 }
 
 .btn-excel:hover {
-    color: #FFFDFD;
-    background-color: #3a9dd3;
-    border-color: #0e6696;
+  color: #FFFDFD;
+  background-color: #3a9dd3;
+  border-color: #0e6696;
 }
 
 .send-excel-btn{
-    margin-top: 10px;
+  margin-top: 10px;
 
 }
 
 .bg-perfil{
-    background: url(/assets/images/bg-perfil.jpg) center;
-    background-size: cover;
-    color: white;
+  background: url(/assets/images/bg-perfil.jpg) center;
+  background-size: cover;
+  color: white;
 }
 
 .blue-header{
-    background-color: #95BBDD;
-    color: black;
+  background-color: #95BBDD;
+  color: black;
 }
 
 .login-body{
-    height: 100%;
-    width: 100%;
-    background: url(/assets/images/fondo.jpg) center;
+  height: 100%;
+  width: 100%;
+  background: url(/assets/images/fondo.jpg) center;
 }
 .form {
   position: relative;
@@ -142,6 +141,59 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.optionsBar{
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgb(245,245,245); 
+  height: 31px;
+  color: red;
+  list-style-type: none;
+}
+
+.option-item{
+  font-weight: bold;
+    white-space: nowrap;
+    text-align: left;
+  width: 163px;
+  background:linear-gradient(rgb(229,229,229),rgb(214,214,214));
+  background-color: rgb(229,229,229);
+  border: 1px solid;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border-color: rgb(214,214,214);
+  height: 31px;
+  position: absolute;
+  top: 17px;
+}
+
+.option-item-link{
+  position: relative;
+  bottom: 9px;
+  left: 5px;
+}
+
+.navbar-cee{
+  height: 31px;
+}
+
+.cee-navbar-container{
+  height: 31px;
+}
+
+.navbar-nav{
+  height: 100%;
+}
+
+.navbar{
+  height: 31px !important;
+}
+
+.navbar-default{
+  height: 31px !important;
+}
+
+
 .table-fixed{
   width: 100%;
   background-color: #f3f3f3;
@@ -149,7 +201,7 @@
     height:200px;
     overflow-y:auto;
     width: 100%;
-    }
+  }
   thead,tbody,tr,td,th{
     display:block;
   }
@@ -162,8 +214,8 @@
     tr{
       th{
         float:left;
-       background-color: #f39c12;
-       border-color:#e67e22;
+        background-color: #f39c12;
+        border-color:#e67e22;
       }
     }
   }

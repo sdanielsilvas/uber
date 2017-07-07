@@ -99,9 +99,14 @@ class OportunitiesController < ApplicationController
 
 	def send_to_auction
 		@oportunity = Oportunity.find(params[:id])
-		@oportunity.status = 'Iniciando'
+		if @oportunity.status == nil
+			@oportunity.status = 'Elegir plantilla'
+			@oportunity.save
+		else
+			@oportunity.status = 'Iniciando'
 		@oportunity.save
 		Oportunity.send_oportunity(@oportunity)
+		end
 		#redirect_to root_path
 	end
 
