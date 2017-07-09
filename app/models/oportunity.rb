@@ -52,7 +52,7 @@ class Oportunity < ApplicationRecord
 	def self.send_resellers_email(oportunity,resellers)
 		op = OportunityProvider.where(oportunity_identification:oportunity.identification)
 		unless op.blank?
-			OportunityMailer.resellers("ssilva@intergrupo.com",oportunity,resellers).deliver
+			OportunityMailer.resellers("sdanielsilvas@gmail.com",oportunity,resellers).deliver
 		end	
 	end
 	
