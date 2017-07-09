@@ -10,46 +10,54 @@
 </head>
 
 <body>
-	<div class="row header">
-		<div class="col-md-6 col-md-offset-1"> 
-			<h3><span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo.png" width="164" height="60" alt=""></a></span>| <span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo-go.png" width="164" height="40" alt=""></a></span></h3>  
-		</div>
-	</div>
-	<div class="jumbotron bg-perfil">
-		<div class="container">
-			<div class="text-center">
-				<h1>hagale pues</h1>
-				
+	<div class="container">
+		
+
+		<div class="row header">
+			<div class="col-md-6 col-md-offset-1"> 
+				<h3><span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo.png" width="164" height="60" alt=""></a></span>| <span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo-go.png" width="164" height="40" alt=""></a></span></h3>  
 			</div>
 		</div>
-	</div>
-	
-	<%=@opportunity.identification%>
-	<hr>
-	
-	<div class="col-md-12">
-		<table class="table">
-			<thead>
-				<tr>
-					<td>Company</td>
-					<td>Email</td>
-					<td>Options</td>
-				</tr>
-			</thead>
-			<tbody>
-				<%@resellers.each do |reseller|%>
+		<div class="jumbotron bg-perfil">
+			<div class="container">
+				<div class="text-center">
+					<h1>Message</h1>
+
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"> 
+			%%%%%%%%%%%%%%%%%%55 Texto %%%%%%%%%5<%=@opportunity.identification%>
+		</div>
+		</div>
+		
+		
+		<hr>
+		<div class="col-md-2"> 
+			<%=link_to  raw("Enviar Subasta"), sendtoauction_path(@opportunity.id),class:"btn btn-yellow"%>
+		</div>
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Company</td>
+						<td>Email</td>
+						<td>Options</td>
+					</tr>
+				</thead>
+				<tbody>
+					<%@resellers.each do |reseller|%>
 					<tr>
 						<td><%=reseller.provider_nit%></td>
 						<td><%=reseller.provider_nit%></td>
 						<td><%=link_to  raw("Contactar"), choose_path(@opportunity.id,reseller.id),class:"btn btn-primary"%></td>
 					</tr>
-				<%end%>
-			</tbody>
-		</table>
-	</div>
-	<hr>
-	<div>
-		<%=link_to  raw("Subasta"), sendtoauction_path(@opportunity.id),class:"btn btn-primary"%>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+		<hr>
 	</div>
 </body>
 </html>
