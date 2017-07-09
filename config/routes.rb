@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 	#oportunity providers routes
 	post 'oportunity_providers', to:"oportunity_providers#finalize"
 
+	get 'choosed/:id', to:"oportunity_providers#choosed", as:'choosed'
+
 	post 'credentials', to:"users#update_credentials"
 
 	post 'accepted', to:"oportunity_providers#associate"
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
 	get 'contact/:id/:oprovider', to:"providers#contact", as:'contact'
 
 	get 'choose/:id/:oprovider', to:"providers#choose", as:'choose'
+
 
 	get 'reject/:id/:oprovider', to:"providers#reject", as:'reject'
 

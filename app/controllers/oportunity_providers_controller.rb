@@ -12,4 +12,12 @@ class OportunityProvidersController < ApplicationController
 	def associate
 		response = OportunityProvider.associate(JSON.parse(request.body.read)["providers"])
 	end
+
+	def choosed
+		@opportunity = Oportunity.find(params[:id])
+		@opportunity.save
+		#@opportunityProvider = OportunityProvider.find(params[:oprovider])
+		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)
+		
+	end
 end

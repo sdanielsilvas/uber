@@ -9,7 +9,6 @@ class OportunityMailer < ApplicationMailer
 	end
 
 	def client_email(to,op,oprovider)
-		
 		@oportunity = op
 		@oportunityProvider = oprovider
 		@url  = 'http://example.com/login'
@@ -20,7 +19,14 @@ class OportunityMailer < ApplicationMailer
 		@oportunity = op
 		@resellers = resellers
 		@url  = 'http://example.com/login'
-		mail(to: 'sdanielsilvas@gmail.com', subject: 'Los resellers')
+		mail(to: to, subject: 'Los resellers')
+	end
+
+	def choosed(to,op,resellers)
+		@oportunity = op
+		@resellers = resellers
+		@url  = 'http://example.com/login'
+		mail(to: to, subject: 'Los resellers')
 	end
 end
 

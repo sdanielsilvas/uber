@@ -15,6 +15,9 @@
  @import "bootstrap";
  @import "multi-select.css";
 
+ body{
+  font-family: Verdana, Geneva, sans-serif;
+ }
  .alert-error {
   background-color: #f2dede;
   border-color: #eed3d7;
@@ -165,7 +168,8 @@
   border-color: rgb(214,214,214);
   height: 31px;
   position: absolute;
-  top: 4px
+  top: 4px;
+  font-size: 9pt;
 }
 
 .option-item-link{
