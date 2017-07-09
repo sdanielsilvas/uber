@@ -1,18 +1,35 @@
 <% if user_signed_in? %>
 <div class="row header">
-  <div class="col-md-6 col-md-offset-1"> 
+  <div class="col-md-6 logo-geo"> 
     <h3><span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo.png" width="164" height="60" alt=""></a></span>| <span style="color:red"><a class="logo" target="_self"><img src="/assets/images/logo-go.png" width="164" height="40" alt=""></a></span></h3>  
   </div>  
 </div>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed">
     <ul class="nav navbar-nav">
-      <li class="option-item selected-navbar-item"><%= link_to 'Opportunities', oportunities_path, class:"option-item-link  #{'selected-navbar-item' if @selected=='opp'}"%></li>
-      <li class="option-item"><%= link_to 'Resellers', providers_path, class:"option-item-link #{'selected-navbar-item' if @selected=='prov'}"%></li>
-      <li class="option-item"><%= link_to 'Templates', templates_path, class:"option-item-link #{'selected-navbar-item' if @selected=='tem'}"%></li>
-      <li class="option-item"><%= link_to 'Products', capabilities_path, class:"option-item-link #{'selected-navbar-item' if @selected=='templates'}"%></li>
+    <%if @selected=='opportunities'%>
+      <li class="option-item selected-navbar-item"><%= link_to "#{image_tag('/assets/images/Tb_MidMid_bullet.gif')}Oportunities".html_safe, oportunities_path, class:"option-item-link  #{'selected-navbar-item' if @selected=='opp'}"%></li>
+    <%else%>
+    <li class="option-item "><%= link_to "#{image_tag('/assets/images/Tb_MidMid_Off_bullet.gif')}Oportunities".html_safe, oportunities_path, class:"option-item-link"%></li>
+    <%end%>
+
+    <%if @selected=='providers'%>
+      <li class="option-item selected-navbar-item"><%= link_to "#{image_tag('/assets/images/Tb_MidMid_bullet.gif')}Resellers".html_safe, providers_path, class:"option-item-link  #{'selected-navbar-item' if @selected=='opp'}"%></li>
+    <%else%>
+    <li class="option-item "><%= link_to "#{image_tag('/assets/images/Tb_MidMid_Off_bullet.gif')}Resellers".html_safe, providers_path, class:"option-item-link "%></li>
+    <%end%>
+
+    <%if @selected=='templates'%>
+      <li class="option-item selected-navbar-item"><%= link_to "#{image_tag('/assets/images/Tb_MidMid_bullet.gif')}Templates".html_safe, templates_path, class:"option-item-link  #{'selected-navbar-item' if @selected=='opp'}"%></li>
+    <%else%>
+    <li class="option-item "><%= link_to "#{image_tag('/assets/images/Tb_MidMid_Off_bullet.gif')}Templates".html_safe, templates_path, class:"option-item-link "%></li>
+    <%end%>
+
+    <%if @selected=='products'%>
+      <li class="option-item selected-navbar-item"><%= link_to "#{image_tag('/assets/images/Tb_MidMid_bullet.gif')}Products".html_safe, capabilities_path, class:"option-item-link  #{'selected-navbar-item' if @selected=='opp'}"%></li>
+    <%else%>
+    <li class="option-item "><%= link_to "#{image_tag('/assets/images/Tb_MidMid_Off_bullet.gif')}Products".html_safe, capabilities_path, class:"option-item-link "%></li>
+    <%end%>
     </ul>
-  </div>
 </nav>
 <% end %>

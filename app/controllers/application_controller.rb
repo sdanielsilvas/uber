@@ -7,5 +7,9 @@ class ApplicationController < ActionController::Base
   		render :json => res
   	end
   end
+
+  def set_selected(selected)
+		@selected = selected
+	end
   
 end

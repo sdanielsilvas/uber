@@ -136,8 +136,8 @@ class Oportunity < ApplicationRecord
 			i = i + 1
 		end
 		msg = message.to_json
-		resp = RestClient.get('http://www.serviciosenweb.com:2527/AuctionOpportunities/api/biddingresource/resellers'+'?jsson='+msg)
-		#resp = RestClient.get('http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/resellers'+'?jsson='+msg)
+		#resp = RestClient.get('http://www.serviciosenweb.com:2527/AuctionOpportunities/api/biddingresource/resellers'+'?jsson='+msg)
+		resp = RestClient.get('http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/resellers'+'?jsson='+msg)
 		#resp = "{\"resellers\":[{\"providerId\":\"FOR-ASOC-TMP-785\",\"channelEmail\":\"oferenteprueba001@gmail.com\",\"channelName\":\"Prueba SEW 001\",\"offerPosition\":0},{\"providerId\":\"FOR-ASOC-TMP-786\",\"channelEmail\":\"oferenteprueba002@gmail.com\",\"channelName\":\"Prueba SEW 002\",\"offerPosition\":0}]}"
 		return resp
 	end
@@ -178,8 +178,9 @@ class Oportunity < ApplicationRecord
 		capabilities = getOportunityCapabilities(oportunity)
 		message = {user_name:user_name,password:password_crypt, oportunity:oportunity,items:items,products:capabilities,template:oportunity.template_id.to_s}
 		begin
-			resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
-			#resp = RestClient.post 'http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			#resp = RestClient.post 'http://www.serviciosenweb.com:2527/AuctionOpportunities/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
+			#binding.pry
+			resp = RestClient.post 'http://192.168.1.89:8084/SubastaV4.2/api/biddingresource/crearsubasta', {oportunity: message}.to_json, :content_type => "application/json"
 			puts '####################### Response ###################################'
 			puts resp
 		rescue RestClient::Exception => e

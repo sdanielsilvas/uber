@@ -9,11 +9,12 @@
   <!-- <script type="text/javascript" src="vendor/assets/javascripts/jquery.multi-select.js"></script>
   <link href="vendor/assets/multi-select.css" media="screen" rel="stylesheet" type="text/css"> -->
 </head>
-
 <body>
-  <%= render '/layouts/navbar'%>
-  <div class="container"> 
-    <%= yield %>  		
+  <div class="page-container">
+    <%= render '/layouts/navbar'%>
+    <div class="container fixed-container"> 
+      <%= yield %>      
+    </div>
   </div>
 </body>
 </html>

@@ -76,6 +76,7 @@
 }
 
 .selected-navbar-item{
+
  background:linear-gradient(rgb(229,197,43),rgb(189,156,0)) !important;
 
 }
@@ -153,8 +154,8 @@
 
 .option-item{
   font-weight: bold;
-    white-space: nowrap;
-    text-align: left;
+  white-space: nowrap;
+  text-align: left;
   width: 163px;
   background:linear-gradient(rgb(229,229,229),rgb(214,214,214));
   background-color: rgb(229,229,229);
@@ -164,7 +165,7 @@
   border-color: rgb(214,214,214);
   height: 31px;
   position: absolute;
-  top: 17px;
+  top: 4px
 }
 
 .option-item-link{
@@ -173,26 +174,44 @@
   left: 5px;
 }
 
-.navbar-cee{
-  height: 31px;
-}
 
-.cee-navbar-container{
-  height: 31px;
-}
-
-.navbar-nav{
+.page-container{
   height: 100%;
+  margin-left:20px;
+  margin-right:20px;
+  margin-top: 8px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.21);
 }
 
-.navbar{
-  height: 31px !important;
+.fixed-container{
+  width: 100%;
 }
 
-.navbar-default{
-  height: 31px !important;
+.navbar-fixed{
+  min-height: 35px;
+  height: 35px;
 }
 
+.logo-geo{
+  margin-left: 15px;
+}
+
+.option-circle{
+  
+ 
+    min-height:10px;
+    min-width: 10px;
+    line-height: 10px;
+
+    -moz-border-radius:50%;
+ 
+
+    background-color: black;
+    
+    border-radius: 50%;
+}
 
 .table-fixed{
   width: 100%;

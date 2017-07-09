@@ -1,12 +1,10 @@
 class OportunitiesController < ApplicationController
+
 	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants,:test_email,:take] 
 	before_action :verify_credentials, :only =>[:update]
-
 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants,:test_email,:take] 
-	
 	layout false, only: [:take,:check_resellers]
-
-	before_filter :set_selected
+	before_filter {|controller| controller.set_selected("opportunities")}
 	
 
 	def new
@@ -76,9 +74,7 @@ class OportunitiesController < ApplicationController
 		@items = OportunityItem.where(oportunity_identification:@opportunity.identification)		
 	end
 
-	def set_selected
-		@selected = 'opportunities'
-	end
+	
 
 	def send_client_email
 		response = Oportunity.send_client_email

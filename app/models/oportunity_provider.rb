@@ -48,7 +48,10 @@ class OportunityProvider < ApplicationRecord
 	end
 
 	def self.associate(prov)
-		providers = JSON.parse(prov)
+		puts ('############### el prov #############')
+		puts(prov)
+		puts ('############### el prov #############')
+		providers = prov
 		oportunity = Oportunity.find_by_auction_id(providers.first["opportunityId"])
 		oportunity.status = "EN CURSO_SUBASTA"
 		oportunity.save
@@ -103,9 +106,10 @@ class OportunityProvider < ApplicationRecord
 						@migration_hours = criteria["offertValue"]
 					end
 				end
+				
 				op.points = oportunityprovider["points"]
 				op.position = oportunityprovider["offerPosition"]
-				op.vendor_name:provider.name
+				op.vendor_name = oportunityprovider["providerName"]
 				op.price = @price
 				op.training_hours = @training_hours
 				op.support_hours = @support_hours
@@ -116,6 +120,4 @@ class OportunityProvider < ApplicationRecord
 			end
 		end
 	end
-
-
 end
