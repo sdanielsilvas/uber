@@ -27,15 +27,18 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"> 
-			%%%%%%%%%%%%%%%%%%55 Texto %%%%%%%%%5<%=@opportunity.identification%>
-		</div>
+			<div class="col-md-12">
+				<h4><p>Below is a list of resellers that can meet your need, if you are interested in contacting one of these resellers and click on the "Contact" button in front of this one.
+
+				You can also click on the "Send to auction" button to start a process in which the reseller will be selected that can cover your need in the best way</p></h4>
+
+			</div>
 		</div>
 		
 		
 		<hr>
 		<div class="col-md-2"> 
-			<%=link_to  raw("Enviar Subasta"), sendtoauction_path(@opportunity.id),class:"btn btn-yellow"%>
+			<%=link_to  raw("Send to auction"), sendtoauction_path(@opportunity.id),class:"btn btn-yellow"%>
 		</div>
 		<div class="col-md-12">
 			<table class="table">
@@ -51,7 +54,7 @@
 					<tr>
 						<td><%=reseller.provider_nit%></td>
 						<td><%=reseller.provider_nit%></td>
-						<td><%=link_to  raw("Contactar"), choose_path(@opportunity.id,reseller.id),class:"btn btn-primary"%></td>
+						<td><%=link_to  raw("Contact"), choose_path(@opportunity.id,reseller.id),class:"btn btn-primary"%></td>
 					</tr>
 					<%end%>
 				</tbody>

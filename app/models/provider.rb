@@ -33,7 +33,7 @@ class Provider < ApplicationRecord
 
 	def self.createProviders(prov,oportunity)
 		providers = JSON.parse(prov)
-		oportunity.status = "A dedo?"
+		oportunity.status = "Pendiente"
 		oportunity.save
 		JSON.parse(providers['resellers']).each do |oportunityprovider|
 			provider = Provider.find_by_nit(oportunityprovider["providerId"])
