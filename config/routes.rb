@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
 	get 'take_opportunity/:id/:oprovider', to:"oportunities#take", as:'take_opportunity'
 
+	get 'send_cotization/:id/:oprovider', to:"oportunities#invoice", as:'send_cotization'
+
 	get 'contact/:id/:oprovider', to:"providers#contact", as:'contact'
 
 	get 'choose/:id/:oprovider', to:"providers#choose", as:'choose'

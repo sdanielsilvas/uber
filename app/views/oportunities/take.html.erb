@@ -143,7 +143,8 @@
 		</div>
 		<div class="col-md-12 text-right">
 			<%= submit_tag('I do NOT want to contact the customer',class:'btn btn-warning') %>
-			<%= submit_tag('I want to contact the customer',class:'btn btn-success') %>
+			<%=link_to  raw("I want to contact the customer"), send_cotization_path(@opportunity.id,@opportunityProvider.id),class:"btn btn-success"%>
+			
 		</div>
 	</div>
 </body>

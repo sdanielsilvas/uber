@@ -3,7 +3,7 @@ class OportunitiesController < ApplicationController
 	before_action :authenticate_user!, :except => [:update,:test,:finalize,:set_participants,:test_email,:take] 
 	before_action :verify_credentials, :only =>[:update]
 	skip_before_filter :verify_authenticity_token, :only => [:update,:load,:test,:finalize,:set_participants,:test_email,:take] 
-	layout false, only: [:take,:check_resellers]
+	layout false, only: [:take,:check_resellers,:invoice]
 	before_filter {|controller| controller.set_selected("opportunities")}
 	
 
@@ -104,6 +104,8 @@ class OportunitiesController < ApplicationController
 			Oportunity.send_oportunity(@oportunity)
 		end
 		#redirect_to root_path
+	end
+	def invoice
 	end
 
 end
