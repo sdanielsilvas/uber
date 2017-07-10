@@ -11,7 +11,7 @@ class Provider < ApplicationRecord
 	end
 
 	def self.choose(opportunity,opportunityProvider)
-		OportunityMailer.choosed("sdanielsilvas@gmail.com",opportunity,opportunityProvider).deliver
+		OportunityMailer.choosed("ricardo.pineda@serviciosenweb.com",opportunity,opportunityProvider).deliver
 	end
 
 	def self.reject(opportunity,opportunityProvider)

@@ -19,14 +19,14 @@ class OportunityMailer < ApplicationMailer
 		@oportunity = op
 		@resellers = resellers
 		@url  = 'http://example.com/login'
-		mail(to: to, subject: 'Los resellers')
+		mail(to: to, subject: 'Resellers list')
 	end
 
 	def choosed(to,op,resellers)
 		@oportunity = op
 		@resellers = resellers
 		@url  = 'http://example.com/login'
-		mail(to: to, subject: 'Los resellers')
+		mail(to: to, subject: 'Licesing opportunity')
 	end
 end
 
