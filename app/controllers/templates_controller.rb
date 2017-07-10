@@ -1,4 +1,6 @@
 class TemplatesController < ApplicationController
+
+	before_filter {|controller| controller.set_selected("templates")}
 	def index
 		@templates = current_user.templates
 	end

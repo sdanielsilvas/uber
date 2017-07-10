@@ -1,34 +1,51 @@
 <%if @template.name == 'plantilla europa'%>
 <div class="row">
-	<div class="col-md-2">
+<div class="col-md-2">
 		Nombre:
 	</div>
 	<div class="col-md-10">
 		<%=@template.name%>
 	</div>
-	<div class="col-md-2">
-	Precio:
-	</div>
-	<div class="col-md-2">
-		25%
-	</div>
-	<div class="col-md-2 col-md-offset-2">
-		Horas de Soporte
-	</div>
-	<div class="col-md-4">
-		25%
-	</div>
-	<div class="col-md-2">
-		Disponibilidad del soporte:
-	</div>
-	<div class="col-md-2">
-		25%:
-	</div>
-	<div class="col-md-2 col-md-offset-2">
-		Horas de migracion:
-	</div>
-	<div class="col-md-4">
-		25%:
+	<div class="col-md-12">
+		
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>weight</th>
+				<th>Values</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Precio:</td>
+				<td>20%</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Horas de Soporte</td>
+				<td>20%</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Disponibilidad del soporte</td>
+				<td>20%</td>
+				<td><p>Siete por venticuatro(7x24)
+				 - Cinco por ocho(5x8)</p></td>
+			</tr>
+			<tr>
+				<td>Horas de migracion</td>
+				<td>20%</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Horas de capacitación</td>
+				<td>20%</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 	</div>
 </div>
 <%else%>
@@ -39,29 +56,31 @@
 	<div class="col-md-10">
 		<%=@template.name%>
 	</div>
-	<div class="col-md-2">
-	Precio:
-	</div>
-	<div class="col-md-2">
-		30%
-	</div>
-	<div class="col-md-2 col-md-offset-2">
-		Horas de Soporte
-	</div>
-	<div class="col-md-4">
-		20%
-	</div>
-	<div class="col-md-2">
-		Soporte local:
-	</div>
-	<div class="col-md-2">
-		30%:
-	</div>
-	<div class="col-md-2  col-md-offset-2">
-		Horas de migracion:
-	</div>
-	<div class="col-md-4">
-		20%:
+	<div class="col-md-12">
+		
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>weight</th>
+				<th>Valores</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Horas de Soporte</td>
+				<td>50%</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Disponibilidad del soporte</td>
+				<td>50%</td>
+				<td><p>Siete por venticuatro(7x24)
+				 - Cinco por ocho(5x8)</p></td>
+			</tr>
+		</tbody>
+	</table>
 	</div>
 </div>
 <%end%>

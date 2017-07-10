@@ -1,4 +1,5 @@
 class CapabilitiesController < ApplicationController
+	before_filter {|controller| controller.set_selected("products")}
 	def index
 		@products = Product.all
 		@capabilities = Capability.all
