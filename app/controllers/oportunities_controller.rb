@@ -106,6 +106,13 @@ class OportunitiesController < ApplicationController
 		#redirect_to root_path
 	end
 	def invoice
+		#binding.pry
+		@opportunity = Oportunity.find(params[:id])
+	end
+	def load_invoice
+		binding.pry
+		opportunity = Oportunity.find(params[:id])
+		OportunityMailer.invoice("sdanielsilvas@gmail.com",opportunity,params['file']).deliver
 	end
 
 end

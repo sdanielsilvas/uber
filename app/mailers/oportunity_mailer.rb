@@ -28,5 +28,14 @@ class OportunityMailer < ApplicationMailer
 		@url  = 'http://example.com/login'
 		mail(to: to, subject: 'Licesing opportunity')
 	end
+
+	def invoice(to,opportunity,file)
+		@opportunity = opportunity
+		attachments['invoice.pdf'] = File.read(file.path)
+		@url  = 'http://example.com/login'
+		binding.pry
+		mail(to: to, subject: 'Licesing opportunity')
+	end
+
 end
 

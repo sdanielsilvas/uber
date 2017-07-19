@@ -2,7 +2,12 @@ class TemplatesController < ApplicationController
 
 	before_filter {|controller| controller.set_selected("templates")}
 	def index
-		@templates = current_user.templates
+		#@templates = current_user.templates
+		response = Template.getTemplates
+		templates = JSON.parse(response)
+		#binding.pry
+		@templates = JSON.parse(templates["Templates"])
+
 	end
 
 	def new

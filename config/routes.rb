@@ -44,6 +44,8 @@ Rails.application.routes.draw do
 
 	get 'choose/:id/:oprovider', to:"providers#choose", as:'choose'
 
+	post 'load_invoice', to:"oportunities#load_invoice", as:'load_invoice'
+
 
 	get 'reject/:id/:oprovider', to:"providers#reject", as:'reject'
 
@@ -69,4 +71,6 @@ Rails.application.routes.draw do
 	get 'product', to:'products#new'
 
 	post 'product', to:'products#create'
+
+	get 'confirm_quote/:id', to:'oportunity#confirm_quote', as:'confirm_quote'
 end
